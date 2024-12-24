@@ -18,20 +18,9 @@ spec:
           ports:
             - containerPort: 9090
           volumeMounts:
-            - mountPath: /app
+            - mountPath: /etc/linkding/data
               name: linkding-data
       volumes:
       - name: linkding-data
         persistantVolumeClaim: 
           claimName: linkding-data-pvc
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: linkding-data-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
