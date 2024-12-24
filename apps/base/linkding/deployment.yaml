@@ -20,7 +20,7 @@ spec:
 
           volumeMounts:
             - name: linkding-data
-              mountPath: /etc/linkding/data
+              mountPath: /apps
       volumes:
         - name: linkding-data
           persistentVolumeClaim:
