@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - deployment.yaml
-  - loadbalancer.yaml
+  - service.yaml
   - storage.yaml
