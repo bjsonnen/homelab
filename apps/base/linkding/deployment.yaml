@@ -21,4 +21,11 @@ spec:
       - image: sissbruecker/linkding:1.31.0
         name: linkding
         resources: {}
+        volumeMounts:
+        - mountPath: /etc/linkding/data
+          name: linkding-data
+    volumes:
+    - name: linkding-data
+      persistentVolumeClaim:
+        claimName: linkding-data-pvc
 status: {}
