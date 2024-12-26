@@ -25,4 +25,12 @@ spec:
         envFrom:
         - secretRef:
             name: mysql-container-env
+
+        volumeMonuts:
+        - mountPath: /var/lib/mysql
+          name: mysql-app-volume
+      volumes:
+      - name: mysql-app-volume
+        persistentVolumeClaim:
+          claimName: mysql-app-pvc
 status: {}
