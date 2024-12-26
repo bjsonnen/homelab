@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: homepage
+  name: homepage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homepage
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: homepage
+    spec:
+      containers:
+      - image: php:8.2.27-apache
+        name: php
+        resources: {}
+        volumeMounts:
+        - mountPath: /var/www/html
+          name: homepage-storage
+    volumes:
+    - name: homepage-storage
+      persistentVolumeClaim:
+        claimName: homepage-storage-pvc
+status: {}
