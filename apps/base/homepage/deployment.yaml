@@ -24,8 +24,8 @@ spec:
         volumeMounts:
         - mountPath: /var/www/html
           name: homepage-storage
-    volumes:
-    - name: homepage-storage
-      persistentVolumeClaim:
-        claimName: homepage-storage-pvc
+      volumes:
+      - name: homepage-storage
+        persistentVolumeClaim:
+          claimName: homepage-storage-pvc
 status: {}
