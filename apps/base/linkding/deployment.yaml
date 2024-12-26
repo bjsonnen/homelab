@@ -27,6 +27,10 @@ spec:
         name: linkding
         resources: {}
 
+        envFrom:
+          - secretRef:
+              name: linkding-container-env
+
         securityContext:
           allowPrivilegeEscalation: false
 
