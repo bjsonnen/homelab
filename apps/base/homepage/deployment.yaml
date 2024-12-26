@@ -23,9 +23,9 @@ spec:
         resources: {}
         volumeMounts:
         - mountPath: /var/www/html
-          name: homepage-storage
+          name: homepage-data
       volumes:
-      - name: homepage-storage
+      - name: homepage-data
         persistentVolumeClaim:
-          claimName: homepage-storage-pvc
+          claimName: homepage-data-pvc
 status: {}
