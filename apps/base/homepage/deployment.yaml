@@ -17,13 +17,22 @@ spec:
       labels:
         app: homepage
     spec:
+      securityContext:
+        fsGroup: 33
+        runAsUser: 33
+        runAsGroup: 33
+
       containers:
       - image: php:8.2.27-apache
         name: php
         resources: {}
+
         volumeMounts:
         - mountPath: /var/www/html
           name: homepage-data
+
+        securityContext:
+          allowPrivilegeEscalation: false
       volumes:
       - name: homepage-data
         persistentVolumeClaim:
