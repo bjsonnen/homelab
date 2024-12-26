@@ -25,4 +25,12 @@ spec:
         envFrom:
         - secretRef:
             name: nextcloud-container-env
+
+        volumeMounts:
+          - mountPath: /var/www/html
+            name: nextcloud-app-volume
+      volumes:
+      - name: nextcloud-app-volume
+        persistantVolumeClaim:
+          claimName: nextcloud-app-pvc
 status: {}
