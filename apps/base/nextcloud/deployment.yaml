@@ -27,7 +27,7 @@ spec:
             name: nextcloud-container-env
 
         volumeMounts:
-          - mountPath: /var/www/html
+          - mountPath: /var/www/html/
             name: nextcloud-app-volume
       volumes:
       - name: nextcloud-app-volume
