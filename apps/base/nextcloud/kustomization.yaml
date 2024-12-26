@@ -4,6 +4,7 @@ resources:
   - namespace.yaml
   - deployment.yaml
   - service.yaml
+  - secrets.yaml
 
   - deployment-mysql.yaml
   - secrets-mysql.yaml

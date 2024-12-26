@@ -21,4 +21,8 @@ spec:
       - image: nextcloud
         name: nextcloud
         resources: {}
+
+        envFrom:
+        - secretRef:
+            name: nextcloud-container-env
 status: {}
