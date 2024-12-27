@@ -21,14 +21,14 @@ There are currently no worker nodes. The operating system is [proxmox](https://w
 
 The reason for proxmox is because I can play around. I can use Ubuntu server or switch to talos for a while.
 
-### Staging
-
 I'm using a mini pc because:
 - It costs almost as much as a refurbished device.
 - I can add a second SSD with up to 2TB.
 - I can upgrade the RAM to 64GB.
 - I can upgrade the SSD to 2TB.
 - It has a good CPU.
+
+### Staging
 
 Control Plane Node:
 - NiPoGi AM16 Mini PC
