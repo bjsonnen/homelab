@@ -39,7 +39,7 @@ spec:
 
       initContainers:
       - image: alpine
-        name: phpInit
+        name: php-init
 
         volumeMounts:
         - mountPath: /var/www/html
