@@ -20,5 +20,11 @@ spec:
       containers:
       - image: lissy93/dashy
         name: dashy
+
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+          fsGroup: 1000
+
         resources: {}
 status: {}
