@@ -35,7 +35,7 @@ spec:
       initContainers:
       - image: alpine/git:2.47.1
         name: php-init
-        command: ["sh", "-c", "mkdir /init-data1 && git clone https://github.com/meowosaurus/homepage-homeserver.git /init-data1 && cp -r /init-data1/* /var/www/html/*"]
+        command: ["sh", "-c", "mkdir /init-data2 && git clone https://github.com/meowosaurus/homepage-homeserver.git /init-data2 && cp -r /init-data2/* /var/www/html/"]
         restartPolicy: Always
         
         volumeMounts:
