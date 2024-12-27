@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: dashy
+  name: dashy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dashy
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: dashy
+    spec:
+      containers:
+      - image: lissy93/dashy
+        name: dashy
+        resources: {}
+status: {}
