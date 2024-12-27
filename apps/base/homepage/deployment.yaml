@@ -51,6 +51,6 @@ spec:
 
       volumes:
       - name: homepage-data
-        persistentVolumeClaim:
-          claimName: homepage-data-pvc
+        emptyDir:
+          sizeLimit: 500Mi
 status: {}
