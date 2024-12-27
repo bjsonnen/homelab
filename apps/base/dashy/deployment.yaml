@@ -27,4 +27,13 @@ spec:
         #  fsGroup: 1000
 
         resources: {}
+
+        volumeMounts:
+        - mountPath: /app
+          name: dashy-data
+
+      volumes:
+      - name: dashy-data
+        persistentVolumeClaim:
+          claimName: dashy-data-pvc
 status: {}
