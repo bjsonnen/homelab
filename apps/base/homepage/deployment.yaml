@@ -35,18 +35,23 @@ spec:
       initContainers:
       - image: alpine/git:2.47.1
         name: php-init
-        command: ["sh", "-c", "git clone https://github.com/meowosaurus/homepage-homeserver.git /var/www/html/"]
+        command: ["sh", "-c", "git clone https://github.com/meowosaurus/homepage-homeserver.git /init-data && cp -r /init-data/* /var/www/html/*"]
         restartPolicy: Always
         
         volumeMounts:
         - mountPath: /var/www/html
           name: homepage-data
+        - mountPath: /init-data
+          name: homepage-init
 
         securityContext:
           allowPrivilegeEscalation: false
 
       volumes:
       - name: homepage-data
+        emptyDir:
+          sizeLimit: 500Mi
+      - name: homepage-init
         emptyDir:
           sizeLimit: 500Mi
 status: {}
