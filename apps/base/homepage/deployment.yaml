@@ -40,7 +40,7 @@ spec:
       initContainers:
       - image: alpine/git:2.47.1
         name: php-init
-        command: ["sh", "-c", "rm -rf /var/www/html/ && git clone https://github.com/meowosaurus/homepage-homeserver.git /var/www/html/"]
+        command: ["sh", "-c", "git clone https://github.com/meowosaurus/homepage-homeserver.git /var/www/html/"]
 
         volumeMounts:
         - mountPath: /var/www/html
