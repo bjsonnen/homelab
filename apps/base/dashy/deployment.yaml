@@ -29,7 +29,7 @@ spec:
         resources: {}
 
         volumeMounts:
-        - mountPath: /app
+        - mountPath: /app/user-data/
           name: dashy-data
 
       volumes:
