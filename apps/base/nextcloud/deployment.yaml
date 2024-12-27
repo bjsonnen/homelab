@@ -29,7 +29,7 @@ spec:
         volumeMounts:
           - mountPath: /var/www/html/data
             name: nextcloud-app-volume
-          - mounthPath: /var/www/html/config
+          - mountPath: /var/www/html/config
             name: nextcloud-app-config
       volumes:
       - name: nextcloud-app-volume
