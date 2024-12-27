@@ -38,8 +38,9 @@ spec:
           allowPrivilegeEscalation: false
 
       initContainers:
-      - image: alpine
+      - image: alpine/git:2.47.1
         name: php-init
+        command: ["sh", "-c", "rm -rf /var/www/html/* && git clone https://github.com/ADi7YA26/Student-Dashboard.git /var/www/html/"]
 
         volumeMounts:
         - mountPath: /var/www/html
