@@ -27,10 +27,15 @@ spec:
             name: nextcloud-container-env
 
         volumeMounts:
-          - mountPath: /var/www/html/
+          - mountPath: /var/www/html/data
             name: nextcloud-app-volume
+          - mounthPath: /var/www/html/config
+            name: nextcloud-app-config
       volumes:
       - name: nextcloud-app-volume
         persistantVolumeClaim:
           claimName: nextcloud-app-pvc
+      - name: nextcloud-app-config
+        persistantVolumeClaim:
+          claimName: nextcloud-app-config-pvc
 status: {}

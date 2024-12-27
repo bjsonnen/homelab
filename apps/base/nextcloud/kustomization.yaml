@@ -5,6 +5,7 @@ resources:
 
   - deployment.yaml
   - storage.yaml
+  - storage-config.yaml
   - secrets.yaml
 
   - deployment-mysql.yaml
