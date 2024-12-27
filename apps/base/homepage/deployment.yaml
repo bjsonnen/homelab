@@ -21,7 +21,6 @@ spec:
       - image: php:8.2.27-apache
         name: php
         resources: {}
-        restartPolicy: Always
 
         volumeMounts:
         - mountPath: /var/www/html
