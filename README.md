@@ -135,6 +135,17 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
+            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/traefik.svg" >
+        </td>
+        <td>
+            <a href="https://github.com/traefik/traefik">traefik</a>
+        </td>
+        <td>
+            An ingress reverse proxy used internally by Kubernetes. 
+        </td>
+    </tr>
+    <tr>
+        <td>
             <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/cloudflare.png">
         </td>
         <td>
