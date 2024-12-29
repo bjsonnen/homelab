@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: homepage
+  name: homepage
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homepage
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: homepage
+    spec:
+      containers:
+      - image: ghcr.io/gethomepage/homepage:latest
+        name: homepage
+        resources: {}
+
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+          allowPrivilegeEscalation: false
+status: {}
