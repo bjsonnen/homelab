@@ -1,3 +1,5 @@
+### THIS FILE IS NOT BEING USED IT'S A REFERENCE FOR nextcloud/nextcloud by Helm
+
 ---
 # Source: nextcloud/templates/secrets.yaml
 apiVersion: v1

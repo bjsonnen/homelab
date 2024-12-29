@@ -85,30 +85,31 @@ spec:
           resources:
             {}
           volumeMounts:
-            - name: nextcloud-main
+            - name: nextcloud-data
               mountPath: /var/www/
               subPath: root
-            - name: nextcloud-main
+            - name: nextcloud-data
               mountPath: /var/www/html
               subPath: html
-            - name: nextcloud-main
+            - name: nextcloud-data
               mountPath: /var/www/html/data
               subPath: data
-            - name: nextcloud-main
+            - name: nextcloud-data
               mountPath: /var/www/html/config
               subPath: config
-            - name: nextcloud-main
+            - name: nextcloud-data
               mountPath: /var/www/html/custom_apps
               subPath: custom_apps
-            - name: nextcloud-main
+            - name: nextcloud-data
               mountPath: /var/www/tmp
               subPath: tmp
-            - name: nextcloud-main
+            - name: nextcloud-data
               mountPath: /var/www/html/themes
               subPath: themes
       volumes:
-        - name: nextcloud-main
-          emptyDir: {}
+      - name: nextcloud-data
+        persistentVolumeClaim:
+          claimName: nextcloud-data-pvc
       securityContext:
         # Will mount configuration files as www-data (id: 33) for nextcloud
         fsGroup: 33
