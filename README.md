@@ -11,11 +11,6 @@ Here you can find all config files for my homelab.
 
 I'm currently using the following technologies:
 
-- [Ubuntu](https://ubuntu.com/) Server 24.
-- [FluxCD](https://fluxcd.io/) for GitOps.
-- [Helm](https://helm.sh/) for templates.
-- [Kubernetes](https://kubernetes.io/) with [k3s](https://k3s.io/).
-
 ### Applications
 
 <table>
@@ -35,7 +30,7 @@ I'm currently using the following technologies:
             <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/nextcloud.png">
         </td>
         <td>
-            [Nextcloud](https://nextcloud.com/)
+            <a href="https://nextcloud.com">Nextcloud</a>
         </td>
         <td>
             An open-source self-hosted file storage. Made available to the public via a Cloudflare Tunnel.
@@ -62,7 +57,7 @@ I'm currently using the following technologies:
             <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/proxmox.png">
         </td>
         <td>
-            [Proxmox](https://www.proxmox.com/en/)
+            <a href="https://www.proxmox.com/en/">Proxmox</a>
         </td>
         <td>
             Enterprise software for virtualization.
@@ -73,7 +68,7 @@ I'm currently using the following technologies:
             <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/ubuntu.png" >
         </td>
         <td>
-            [Ubuntu](https://ubuntu.com/)
+            <a href="https://ubuntu.com/">Ubuntu</a>
         </td>
         <td>
             An open-source operating system developed by Canonical.
@@ -84,7 +79,7 @@ I'm currently using the following technologies:
             <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/fluxcd.png" >
         </td>
         <td>
-            FluxCD
+            <a href="https://fluxcd.io/">FluxCD</a>
         </td>
         <td>
             A CNCF project for continuous and progressive delivery of Kubernetes applications and infrastructure. It's used to enable GitOps.
@@ -95,7 +90,7 @@ I'm currently using the following technologies:
             <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/helm.svg" >
         </td>
         <td>
-            Helm
+            <a href="helm.sh">Helm</a>
         </td>
         <td>
             A package manager for Kubernetes. With Helm you can install applications directly to Kubernetes. Used to provide templates which are then reconfigured.
@@ -106,7 +101,7 @@ I'm currently using the following technologies:
             <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/k3s.png" >
         </td>
         <td>
-            k3s
+            <a href="https://k3s.io/">k3s</a>
         </td>
         <td>
             A secure and lightweight Kubernetes distribution designed for production environments.
@@ -117,7 +112,7 @@ I'm currently using the following technologies:
             <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/cloudflare.png">
         </td>
         <td>
-            Cloudflare Tunnel
+            <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/">Cloudflare Tunnel</a>
         </td>
         <td>
             Creates a secure connection to Kubernetes pods without a publicly routable IP address.
