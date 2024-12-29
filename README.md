@@ -32,7 +32,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/ubuntu.svg" >
+            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/ubuntu.png" >
         </td>
         <td>
             Ubuntu
@@ -43,7 +43,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            Logo
+            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/fluxcd.png" >
         </td>
         <td>
             FluxCD
@@ -65,7 +65,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            Logo
+            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/k3s.png" >
         </td>
         <td>
             k3s
