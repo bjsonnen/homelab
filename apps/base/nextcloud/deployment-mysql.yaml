@@ -22,9 +22,9 @@ spec:
         name: mysql
         resources: {}
         
-        #env:
-        #- secretRef:
-        #    name: mysql
+        envFrom:
+        - secretRef:
+            name: mysql-env
 
         volumeMounts:
         - mountPath: /var/lib/mysql
