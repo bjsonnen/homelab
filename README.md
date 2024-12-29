@@ -38,7 +38,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/linkding.svg">"
+            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/linkding.svg">
         </td>
         <td>
             <a href="https://github.com/sissbruecker/linkding">linkding</a>
