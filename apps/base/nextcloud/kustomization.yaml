@@ -4,13 +4,4 @@ resources:
   - namespace.yaml
 
   - nextcloud/
-  #- deployment.yaml
-  #- service.yaml
-  #- secrets.yaml
-  #- storage.yaml
-
   - mysql/
-  #- deployment-mysql.yaml
-  #- storage-mysql.yaml
-  #- service-mysql.yaml
-  #- secrets-mysql.yaml
