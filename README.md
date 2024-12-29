@@ -32,13 +32,13 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            Logo
+            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/nextcloud.png">
         </td>
         <td>
-            Nextcloud
+            [Nextcloud](https://nextcloud.com/)
         </td>
         <td>
-            An open-source self-hosted file storage. 
+            An open-source self-hosted file storage. Made available to the public via a Cloudflare Tunnel.
         </td>
     </tr>
 </table>
@@ -59,10 +59,21 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
+            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/proxmox.png">
+        </td>
+        <td>
+            [Proxmox](https://www.proxmox.com/en/)
+        </td>
+        <td>
+            Enterprise software for virtualization.
+        </td>
+    </tr>
+    <tr>
+        <td>
             <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/ubuntu.png" >
         </td>
         <td>
-            Ubuntu 24
+            [Ubuntu](https://ubuntu.com/)
         </td>
         <td>
             An open-source operating system developed by Canonical.
