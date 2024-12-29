@@ -31,6 +31,17 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
+            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/homepage.svg">
+        </td>
+        <td>
+            <a href="https://github.com/gethomepage/homepage">Homepage</a>
+        </td>
+        <td>
+            A modern and open-source dashboard application configurable via a YAML file.
+        </td>
+    </tr>
+    <tr>
+        <td>
             <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/nextcloud.png">
         </td>
         <td>
