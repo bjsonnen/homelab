@@ -1,11 +1,15 @@
 # Homelab
 
-Here you can find all config files for my homelab. 
+In my free time I'm running an enterprise Kubernetes cluster on my home server. I'm using it for learning and playing around. Using GitOps with a public repo forces me to think about security, backups, scalability and maintenance. 
+
+All apps are deployed via GitOps and FluxCD. Some apps are usable outside my local network. This is done with Cloudflare Tunnel.
 
 ## Principles
 
 - Everything is deployed through FluxCD (GitOps)
 - Using a public repo forces me to think more about security.
+- All apps are supposed to work in production. First I need a second mini pc for that. 
+- Secrets are stored inside this git repository. All are encrypted. I'm using [CNCF SOPS](https://fluxcd.io/flux/guides/mozilla-sops/) for encryption.
 
 ## Software
 
