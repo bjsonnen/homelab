@@ -11,3 +11,4 @@ resources:
   - deployment-mysql.yaml
   - storage-mysql.yaml
   - service-mysql.yaml
+  - secrets-mysql.yaml

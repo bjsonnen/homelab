@@ -35,8 +35,25 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             
-            - name: SQLITE_DATABASE
-              value: "nextcloud"
+            #- name: SQLITE_DATABASE
+            #  value: "nextcloud"
+            - name: MYSQL_HOST
+              value: "mysql"
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql
+                  key: MYSQL_USER 
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: mysql
+                  key: MYSQL_DATABASE
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql
+                  key: MYSQL_PASSWORD
             - name: NEXTCLOUD_ADMIN_USER
               valueFrom:
                 secretKeyRef:

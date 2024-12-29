@@ -21,6 +21,11 @@ spec:
       - image: mysql
         name: mysql
         resources: {}
+        
+        env:
+        - secretRef:
+            name: mysql
+
         volumeMounts:
         - mountPath: /var/lib/mysql
           name: mysql-data
