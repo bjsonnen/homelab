@@ -11,9 +11,9 @@ Here you can find all config files for my homelab.
 
 I'm currently using the following technologies:
 
-- [Helm](https://helm.sh/) for templates.
 - [Ubuntu](https://ubuntu.com/) Server 24.
 - [FluxCD](https://fluxcd.io/) for GitOps.
+- [Helm](https://helm.sh/) for templates.
 - [Kubernetes](https://kubernetes.io/) with [k3s](https://k3s.io/).
 
 ## Hareware
