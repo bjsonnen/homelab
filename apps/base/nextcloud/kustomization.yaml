@@ -3,10 +3,10 @@ kind: Kustomization
 resources:
   - namespace.yaml
 
-  - deployment.yaml
-  - service.yaml
-  - secrets.yaml
-  - storage.yaml
+  #- deployment.yaml
+  #- service.yaml
+  #- secrets.yaml
+  #- storage.yaml
 
   - deployment-mysql.yaml
   - storage-mysql.yaml
