@@ -34,9 +34,6 @@ spec:
           image: nextcloud:30.0.4-apache
           imagePullPolicy: IfNotPresent
           env:
-            
-            #- name: SQLITE_DATABASE
-            #  value: "nextcloud"
             - name: MYSQL_HOST
               value: "mysql"
             - name: MYSQL_USER
