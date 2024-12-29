@@ -26,10 +26,10 @@ spec:
         - mountPath: /app/config
           name: homepage-config
 
-        #securityContext:
-        #  runAsUser: 1000
-        #  runAsGroup: 1000
-        #  allowPrivilegeEscalation: false
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+          allowPrivilegeEscalation: false
       
       volumes:
       - name: homepage-config
