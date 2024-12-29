@@ -43,7 +43,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            
+            Logo
         </td>
         <td>
             FluxCD
@@ -54,7 +54,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            
+            Logo
         </td>
         <td>
             Helm
@@ -65,7 +65,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            
+            Logo
         </td>
         <td>
             k3s
