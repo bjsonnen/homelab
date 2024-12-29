@@ -36,6 +36,17 @@ I'm currently using the following technologies:
             An open-source self-hosted file storage. Made available to the public via a Cloudflare Tunnel.
         </td>
     </tr>
+    <tr>
+        <td>
+            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/linkding.svg">"
+        </td>
+        <td>
+            <a href="https://github.com/sissbruecker/linkding">linkding</a>
+        </td>
+        <td>
+            linkding is a self-hosted open-source bookmark manager.
+        </td>
+    </tr>
 </table>
 
 ### System
