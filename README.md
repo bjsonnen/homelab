@@ -16,6 +16,61 @@ I'm currently using the following technologies:
 - [Helm](https://helm.sh/) for templates.
 - [Kubernetes](https://kubernetes.io/) with [k3s](https://k3s.io/).
 
+## System
+
+<table>
+    <tr>
+        <th>
+            Logo
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/ubuntu.svg" >
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Ubuntu
+        </td>
+        <td>
+            FluxCD
+        </td>
+        <td>
+            Helm
+        </td>
+        <td>
+            k3s
+        </td>
+    </tr>
+    <tr>
+        <td>
+            An operating system.
+        </td>
+        <td>
+            Used for GitOps.
+        </td>
+        <td>
+            A package manager for Kubernetes
+        </td>
+        <td>
+            A lightweight Kubernetes distribution.
+        </td>
+    </tr>
+</table>
+
 ## Hareware
 
 There are currently no worker nodes. The operating system is [proxmox](https://www.proxmox.com).
