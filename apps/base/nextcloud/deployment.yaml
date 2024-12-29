@@ -42,17 +42,17 @@ spec:
             - name: MYSQL_USER
               valueFrom:
                 secretKeyRef:
-                  name: mysql
+                  name: mysql-env
                   key: MYSQL_USER 
             - name: MYSQL_DATABASE
               valueFrom:
                 secretKeyRef:
-                  name: mysql
+                  name: mysql-env
                   key: MYSQL_DATABASE
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: mysql
+                  name: mysql-env
                   key: MYSQL_PASSWORD
             - name: NEXTCLOUD_ADMIN_USER
               valueFrom:
