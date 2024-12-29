@@ -16,6 +16,33 @@ I'm currently using the following technologies:
 - [Helm](https://helm.sh/) for templates.
 - [Kubernetes](https://kubernetes.io/) with [k3s](https://k3s.io/).
 
+### Applications
+
+<table>
+    <tr>
+        <th>
+            Logo
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>
+            Logo
+        </td>
+        <td>
+            Nextcloud
+        </td>
+        <td>
+            An open-source self-hosted file storage. 
+        </td>
+    </tr>
+</table>
+
 ### System
 
 <table>
@@ -60,7 +87,7 @@ I'm currently using the following technologies:
             Helm
         </td>
         <td>
-            A package manager for Kubernetes. With Helm you can install applications directly to Kuberntes. Used to provide templates which are then reconfigured.
+            A package manager for Kubernetes. With Helm you can install applications directly to Kubernetes. Used to provide templates which are then reconfigured.
         </td>
     </tr>
     <tr>
@@ -72,6 +99,17 @@ I'm currently using the following technologies:
         </td>
         <td>
             A secure and lightweight Kubernetes distribution designed for production environments.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/cloudflare.png">
+        </td>
+        <td>
+            Cloudflare Tunnel
+        </td>
+        <td>
+            Creates a secure connection to Kubernetes pods without a publicly routable IP address.
         </td>
     </tr>
 </table>
