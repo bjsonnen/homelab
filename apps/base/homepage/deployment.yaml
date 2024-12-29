@@ -22,8 +22,17 @@ spec:
         name: homepage
         resources: {}
 
+        volumeMounts:
+        - mountPath: /app/config
+          name: homepage-config
+
         #securityContext:
         #  runAsUser: 1000
         #  runAsGroup: 1000
         #  allowPrivilegeEscalation: false
+      
+      volumes:
+      - name: homepage-config
+        persistentVolumeClaim:
+          claimName: homepage-config-pvc
 status: {}
