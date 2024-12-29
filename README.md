@@ -35,35 +35,40 @@ I'm currently using the following technologies:
             <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/ubuntu.svg" >
         </td>
         <td>
+            Ubuntu
         </td>
         <td>
-        </td>
-        <td>
+            An operating system.
         </td>
     </tr>
     <tr>
         <td>
-            Ubuntu
+            
         </td>
         <td>
             FluxCD
         </td>
         <td>
-            Helm
-        </td>
-        <td>
-            k3s
+            A tool used for GitOps.
         </td>
     </tr>
     <tr>
         <td>
-            An operating system.
+            
         </td>
         <td>
-            Used for GitOps.
+            Helm
         </td>
         <td>
-            A package manager for Kubernetes
+            A package manager for Kubernetes.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            
+        </td>
+        <td>
+            k3s
         </td>
         <td>
             A lightweight Kubernetes distribution.
