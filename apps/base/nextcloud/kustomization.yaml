@@ -3,12 +3,14 @@ kind: Kustomization
 resources:
   - namespace.yaml
 
-  - deployment.yaml
-  - service.yaml
-  - secrets.yaml
-  - storage.yaml
+  - nextcloud/
+  #- deployment.yaml
+  #- service.yaml
+  #- secrets.yaml
+  #- storage.yaml
 
-  - deployment-mysql.yaml
-  - storage-mysql.yaml
-  - service-mysql.yaml
-  - secrets-mysql.yaml
+  - mysql/
+  #- deployment-mysql.yaml
+  #- storage-mysql.yaml
+  #- service-mysql.yaml
+  #- secrets-mysql.yaml
