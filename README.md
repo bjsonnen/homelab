@@ -27,7 +27,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/nextcloud.png">
+            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/nextcloud.png">
         </td>
         <td>
             <a href="https://nextcloud.com">Nextcloud</a>
@@ -65,7 +65,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/proxmox.png">
+            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/proxmox.png">
         </td>
         <td>
             <a href="https://www.proxmox.com/en/">Proxmox</a>
@@ -76,7 +76,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/ubuntu.png" >
+            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/ubuntu.png" >
         </td>
         <td>
             <a href="https://ubuntu.com/">Ubuntu</a>
@@ -87,7 +87,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/fluxcd.png" >
+            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/fluxcd.png" >
         </td>
         <td>
             <a href="https://fluxcd.io/">FluxCD</a>
@@ -98,7 +98,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/helm.svg" >
+            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/helm.svg" >
         </td>
         <td>
             <a href="helm.sh">Helm</a>
@@ -109,7 +109,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/k3s.png" >
+            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/k3s.png" >
         </td>
         <td>
             <a href="https://k3s.io/">k3s</a>
@@ -120,7 +120,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/cloudflare.png">
+            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/cloudflare.png">
         </td>
         <td>
             <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/">Cloudflare Tunnel</a>
