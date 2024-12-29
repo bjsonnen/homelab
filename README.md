@@ -35,10 +35,10 @@ I'm currently using the following technologies:
             <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/ubuntu.png" >
         </td>
         <td>
-            Ubuntu
+            Ubuntu 24
         </td>
         <td>
-            An operating system.
+            An open-source operating system developed by Canonical.
         </td>
     </tr>
     <tr>
@@ -49,7 +49,7 @@ I'm currently using the following technologies:
             FluxCD
         </td>
         <td>
-            A tool used for GitOps.
+            A CNCF project for continuous and progressive delivery of Kubernetes applications and infrastructure. It's used to enable GitOps.
         </td>
     </tr>
     <tr>
@@ -60,7 +60,7 @@ I'm currently using the following technologies:
             Helm
         </td>
         <td>
-            A package manager for Kubernetes.
+            A package manager for Kubernetes. With Helm you can install applications directly to Kuberntes. Used to provide templates which are then reconfigured.
         </td>
     </tr>
     <tr>
@@ -71,7 +71,7 @@ I'm currently using the following technologies:
             k3s
         </td>
         <td>
-            A lightweight Kubernetes distribution.
+            A secure and lightweight Kubernetes distribution designed for production environments.
         </td>
     </tr>
 </table>
