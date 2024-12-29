@@ -71,7 +71,7 @@ I'm currently using the following technologies:
             <a href="https://www.proxmox.com/en/">Proxmox</a>
         </td>
         <td>
-            Enterprise software for virtualization.
+            Enterprise software for virtualization. Used to play around and switch from Ubuntu to for example <a href="https://www.talos.dev/">Talos Linux</a>.
         </td>
     </tr>
     <tr>
