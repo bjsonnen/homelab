@@ -1,0 +1,153 @@
+---
+# Source: nextcloud/templates/secrets.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: nextcloud
+  labels:
+    app.kubernetes.io/name: nextcloud
+    helm.sh/chart: nextcloud-6.5.2
+    app.kubernetes.io/instance: nextcloud
+    app.kubernetes.io/managed-by: Helm
+type: Opaque
+data:
+  nextcloud-username: "YWRtaW4="
+  nextcloud-password: "Y2hhbmdlbWU="
+---
+# Source: nextcloud/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: nextcloud
+  labels:
+    app.kubernetes.io/name: nextcloud
+    helm.sh/chart: nextcloud-6.5.2
+    app.kubernetes.io/instance: nextcloud
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: app
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 80
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: nextcloud
+    app.kubernetes.io/instance: nextcloud
+    app.kubernetes.io/component: app
+---
+# Source: nextcloud/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextcloud
+  labels:
+    app.kubernetes.io/name: nextcloud
+    helm.sh/chart: nextcloud-6.5.2
+    app.kubernetes.io/instance: nextcloud
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: app
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: nextcloud
+      app.kubernetes.io/instance: nextcloud
+      app.kubernetes.io/component: app
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: nextcloud
+        app.kubernetes.io/instance: nextcloud
+        app.kubernetes.io/component: app
+      annotations:
+        nextcloud-config-hash: 8266a725d5474acb6adbf9f0609a3494dc3340a3ac306db90eac9ddb1b851960
+        php-config-hash: 44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a
+        hooks-hash: 9525c2748a6c7cd0e28ec740623d0b3fa5a75c83b51ccfd136bc89c76737b204
+    spec:
+      containers:
+        - name: nextcloud
+          image: nextcloud:30.0.4-apache
+          imagePullPolicy: IfNotPresent
+          env:
+            
+            - name: SQLITE_DATABASE
+              value: "nextcloud"
+            - name: NEXTCLOUD_ADMIN_USER
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud
+                  key: nextcloud-username
+            - name: NEXTCLOUD_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud
+                  key: nextcloud-password
+            - name: NEXTCLOUD_TRUSTED_DOMAINS
+              value: nextcloud.kube.home
+            - name: NEXTCLOUD_DATA_DIR
+              value: "/var/www/html/data"
+            
+            
+            
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /status.php
+              port:  80
+              httpHeaders:
+              - name: Host
+                value: "nextcloud.kube.home"
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /status.php
+              port:  80
+              httpHeaders:
+              - name: Host
+                value: "nextcloud.kube.home"
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          resources:
+            {}
+          volumeMounts:
+            - name: nextcloud-main
+              mountPath: /var/www/
+              subPath: root
+            - name: nextcloud-main
+              mountPath: /var/www/html
+              subPath: html
+            - name: nextcloud-main
+              mountPath: /var/www/html/data
+              subPath: data
+            - name: nextcloud-main
+              mountPath: /var/www/html/config
+              subPath: config
+            - name: nextcloud-main
+              mountPath: /var/www/html/custom_apps
+              subPath: custom_apps
+            - name: nextcloud-main
+              mountPath: /var/www/tmp
+              subPath: tmp
+            - name: nextcloud-main
+              mountPath: /var/www/html/themes
+              subPath: themes
+      volumes:
+        - name: nextcloud-main
+          emptyDir: {}
+      securityContext:
+        # Will mount configuration files as www-data (id: 33) for nextcloud
+        fsGroup: 33
