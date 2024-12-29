@@ -16,7 +16,7 @@ I'm currently using the following technologies:
 - [Helm](https://helm.sh/) for templates.
 - [Kubernetes](https://kubernetes.io/) with [k3s](https://k3s.io/).
 
-## System
+### System
 
 <table>
     <tr>
@@ -54,7 +54,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            Logo
+            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/helm.svg" >
         </td>
         <td>
             Helm
