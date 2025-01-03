@@ -175,8 +175,8 @@ I'm using a mini pc because:
 Control Plane Node:
 - NiPoGi AM16 Mini PC
   - AMD Ryzen 5 PRO 5675U (6C/12T)
-  - 512GB NVME SSD
-  - 16GB RAM
+  - 2TB NVME SSD
+  - 64GB RAM
 
 ## Credits
 
