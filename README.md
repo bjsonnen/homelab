@@ -2,7 +2,7 @@
 
 In my free time I'm running an enterprise Kubernetes cluster on my home server. I'm using it for learning and playing around. Using GitOps with a public repo forces me to think about security, backups, scalability and maintenance. 
 
-All apps are deployed via GitOps and FluxCD. Some apps are usable outside my local network. This is done with Cloudflare Tunnel.
+All apps are deployed via GitOps and [FluxCD](https://fluxcd.io/). I picked FluxCD over [ArgoCD](https://argoproj.github.io/) because it forces me to use the CLI and not a web interface. Some apps are usable outside my local network. This is done with [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/).
 
 ## Principles
 
