@@ -143,6 +143,17 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
+            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/k3s.png" >
+        </td>
+        <td>
+            <a href="https://k3s.io/">k3s</a>
+        </td>
+        <td>
+            A secure and lightweight Kubernetes distribution designed for production environments (Only used in staging).
+        </td>
+    </tr>
+    <tr>
+        <td>
             <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/fluxcd.png" >
         </td>
         <td>
@@ -161,17 +172,6 @@ I'm currently using the following technologies:
         </td>
         <td>
             A package manager for Kubernetes. With Helm you can install applications directly to Kubernetes. Used to provide templates which are then reconfigured.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/k3s.png" >
-        </td>
-        <td>
-            <a href="https://k3s.io/">k3s</a>
-        </td>
-        <td>
-            A secure and lightweight Kubernetes distribution designed for production environments.
         </td>
     </tr>
     <tr>
