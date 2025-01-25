@@ -11,6 +11,36 @@ All apps are deployed via GitOps and FluxCD. Some apps are usable outside my loc
 - All apps are supposed to work in production. First I need a second mini pc for that. 
 - Secrets are stored inside this git repository. All are encrypted. I'm using [CNCF SOPS](https://fluxcd.io/flux/guides/mozilla-sops/) for encryption.
 
+## How to
+
+- Create a Kubernetes cluster. For example run `talosctl cluster create --workers=3` to create a development Talos Linux cluster with 3 worker nodes and 1 control plane node.
+- Check if FluxCD supports your Kubernetes cluster:
+```
+flux check --pre
+```
+- Export these values and make sure you add your own token/username:
+```
+export GITHUB_TOKEN=<your-token>
+export GITHUB_USER=<your-username>
+```
+- Create the flux system:
+```
+flux bootstrap github \
+  --owner=$GITHUB_USER \
+  --repository=homelab \
+  --branch=main \
+  --path=./clusters/staging \
+  --personal
+```
+- Create a SOPS age key file: `age-keygen -o age.agekey`
+- Use the private key as secret for flux:
+```
+cat age.agekey |
+kubectl create secret generic sops-age \
+--namespace=flux-system \
+--from-file=age.agekey=/dev/stdin
+```
+
 ## Software
 
 I'm currently using the following technologies:
