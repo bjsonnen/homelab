@@ -185,6 +185,17 @@ I'm currently using the following technologies:
             Creates a secure connection to Kubernetes pods without a publicly routable IP address.
         </td>
     </tr>
+    <tr>
+        <td>
+            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/cncf.svg">
+        </td>
+        <td>
+            <a href="https://www.cncf.io/projects/sops/">CNCF SOPS</a>
+        </td>
+        <td>
+            Encrypts and decrypts files like YAML, JSON, ENV, INI, etc. Used for public secrets.
+        </td>
+    </tr>
 </table>
 
 ## Hareware
@@ -203,10 +214,33 @@ I'm using a mini pc because:
 ### Staging
 
 Control Plane Node:
+- Ubuntu 24 VM
+  - 4 CPU Cores
+  - 100GB SSD
+  - 4GB RAM
+
+Scheduling is activated on the control plane node. Only used for testing.
+
+### Production
+
+Control Plane Node:
 - NiPoGi AM16 Mini PC
   - AMD Ryzen 5 PRO 5675U (6C/12T)
   - 2TB NVME SSD
   - 64GB RAM
+
+Through [Proxmox](https://www.proxmox.com/en/) I created 5 VMs with [Talos Linux](https://www.talos.dev/).
+- Control Plane Node (1)
+  - 2 CPU Cores
+  - 32GB SSD
+  - 2GB RAM
+- Worker Nodes (4)
+  - 2 CPU Cores
+  - 32GB SSD
+  - 2 GB RAM
+
+Scheduling is deactivated on the control plane node.
+The CNCF SOPS age keys are different than the staging keys.
 
 ## Credits
 
