@@ -127,7 +127,18 @@ I'm currently using the following technologies:
             <a href="https://ubuntu.com/">Ubuntu</a>
         </td>
         <td>
-            An open-source operating system developed by Canonical.
+            An open-source operating system developed by Canonical (Used only in staging).
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/talos.svg" >
+        </td>
+        <td>
+            <a href="https://talos.dev/">Talos</a>
+        </td>
+        <td>
+            An open-source operating systems focused on Kubernetes (Used only in production).
         </td>
     </tr>
     <tr>
