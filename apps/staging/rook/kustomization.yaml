@@ -16,3 +16,6 @@ spec:
   path: ./cluster-test.yaml 
   prune: true 
   interval: 1m 
+  sourceRef:
+    kind: GitRepository
+    name: homelab
