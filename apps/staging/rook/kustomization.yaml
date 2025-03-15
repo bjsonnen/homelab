@@ -3,4 +3,5 @@ kind: Kustomization
 namespace: rook-ceph
 resources:
   - ../../base/rook-operator/
-  - ./rook-dep.yaml
+  #- ./rook-dep.yaml
+  - ./cluster-test.yaml
