@@ -1,14 +1,14 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: rook-cluster-test
+  name: rook
   namespace: rook-ceph
 spec:
-  dependsOn:
-    - name: rook-operator
-  path: ./cluster-test.yaml
-  prune: true
   interval: 1m
+  targetNamespace: default
   sourceRef:
     kind: GitRepository
-    name: homelab
+    name: rook
+  path: "./cluster"
+  prune: true
+  timeout: 1m
