@@ -4,5 +4,5 @@ namespace: rook-ceph
 resources:
   - ../../base/rook-operator/
   #- ./rook-dep.yaml
-  - ./cluster/
-  - ./toolbox/
+  #- ./cluster/
+  #- ./toolbox/
