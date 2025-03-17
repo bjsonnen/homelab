@@ -19,4 +19,5 @@ jobs:
       - name: Install packages
         run: |
           sudo apt update
+          brew install kube-linter
       
