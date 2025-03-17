@@ -20,7 +20,13 @@ spec:
       containers:
       - image: php:8.2.27-apache
         name: php
-        resources: {}
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "256Mi"
+          limits:
+            cpu: "1"
+            memory: "512Mi"
 
         volumeMounts:
         - mountPath: /var/www/html
@@ -30,6 +36,8 @@ spec:
           fsGroup: 33
           runAsUser: 33
           runAsGroup: 33
+          runAsNonRoot: true
+          readOnlyRootFilesystem: true
           allowPrivilegeEscalation: false
 
       initContainers:
@@ -37,12 +45,22 @@ spec:
         name: php-init
         command: ["sh", "-c", "mkdir /init && git clone https://github.com/meowosaurus/homepage-homeserver.git /init && cp -r /init/* /var/www/html/"]
         restartPolicy: Always
+
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "256Mi"
+          limits:
+            cpu: "1"
+            memory: "512Mi"
         
         volumeMounts:
         - mountPath: /var/www/html
           name: homepage-data
 
         securityContext:
+          runAsNonRoot: true
+          readOnlyRootFilesystem: true
           allowPrivilegeEscalation: false
 
       volumes:
