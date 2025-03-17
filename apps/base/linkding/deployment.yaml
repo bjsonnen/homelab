@@ -39,8 +39,8 @@ spec:
             memory: "1Gi"
 
         securityContext:
+          readOnlyRootFilesystem: false
           allowPrivilegeEscalation: false
-          readOnlyRootFilesystem: true
 
         volumeMounts:
         - mountPath: /etc/linkding/data
