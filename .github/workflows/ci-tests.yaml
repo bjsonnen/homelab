@@ -23,7 +23,7 @@ jobs:
           brew install kube-linter
       - name: Check Kubernetes Manifests
         run: | 
-          ls -la
+          ls -al ${{ github.workspace }}
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           kube-linter lint .
           
