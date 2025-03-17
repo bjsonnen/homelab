@@ -27,9 +27,13 @@ jobs:
           brew install kube-linter
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: Check Kubernetes Manifests
+      - name: Check Kubernetes Manifests /apps
         run: | 
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-          kube-linter lint ${{ github.workspace }}
+          kube-linter lint ${{ github.workspace }}/apps
+      - name: Check Kubernetes Manifests /clusters
+        run: | 
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+          kube-linter lint ${{ github.workspace }}/clusters
           
       
