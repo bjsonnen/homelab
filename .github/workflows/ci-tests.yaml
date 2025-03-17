@@ -1,8 +1,12 @@
 name: Kubernetes CI Tests
 run-name: Kubernetes CI Tests
-on: [push]
+on:
+  push:
+  pull-request:
+    branches:
+      - master
 jobs:
-  Explore-GitHub-Actions:
+  Kubernetes-YAML-Linting:
     runs-on: ubuntu-latest
     steps:
       - name: Install homebrew
