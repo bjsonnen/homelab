@@ -29,10 +29,7 @@ spec:
           runAsNonRoot: false
           readOnlyRootFilesystem: true
 
-        resources:
-          limits: 
-            cpu: "2"
-            memory: "2Gi"
+        resources: {}
 
         volumeMounts:
         - mountPath: /var/lib/mysql

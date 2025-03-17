@@ -21,10 +21,7 @@ spec:
       - image: ghcr.io/gethomepage/homepage:v1.0.4
         name: homepage
 
-        resources:
-          limits:
-            cpu: "1"
-            memory: "512Mi"
+        resources: {}
 
         volumeMounts:
         - mountPath: /app/config

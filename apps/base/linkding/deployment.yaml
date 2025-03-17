@@ -30,10 +30,7 @@ spec:
           - secretRef:
               name: linkding-container-env
 
-        resources:
-          limits:
-            cpu: "1"
-            memory: "1Gi"
+        resources: {}
 
         securityContext:
           readOnlyRootFilesystem: false
