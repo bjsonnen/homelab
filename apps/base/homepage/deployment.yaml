@@ -20,7 +20,6 @@ spec:
       containers:
       - image: ghcr.io/gethomepage/homepage:v1.0.4
         name: homepage
-        resources: {}
 
         resources:
           requests:
