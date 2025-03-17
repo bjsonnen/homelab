@@ -1,12 +1,14 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: rook-ceph
-  namespace: rook-ceph
+  name: podinfo
+  namespace: flux-system
 spec:
-  interval: 5m
-  path: "../../apps/base/rook-operator/"
+  interval: 1m0s
+  path: ./apps/base/rook-operator/
   prune: true
+  retryInterval: 1m0s
   sourceRef:
     kind: GitRepository
-    name: rook-ceph
+    name: podinfo
+  targetNamespace: rook-ceph
