@@ -5,9 +5,6 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
       - name: Install homebrew
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -29,10 +26,6 @@ jobs:
       - name: Check Kubernetes Manifests
         run: | 
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-          ls ${{ github.workspace }}
           kube-linter lint ${{ github.workspace }}
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
           
       
