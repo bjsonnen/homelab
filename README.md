@@ -10,9 +10,12 @@ All apps are deployed via GitOps and [FluxCD](https://fluxcd.io/). I picked Flux
 - Using a public repo forces me to think more about security.
 - All apps are supposed to work in production. First I need a second mini pc for that. 
 - Secrets are stored inside this git repository. All are encrypted. I'm using [CNCF SOPS](https://fluxcd.io/flux/guides/mozilla-sops/) for encryption.
+- Storage is managed through [Rook](https://rook.io/).
+  - Only on the staging cluster with one disk with 100gb. 
 
 ## How to
 
+- Make sure you have a non-formatted disk on your VM for your Kubernetes cluster. This is required for [Rook](https://rook.io/).
 - Create a Kubernetes cluster. For example run `talosctl cluster create --workers=3` to create a development Talos Linux cluster with 3 worker nodes and 1 control plane node.
 - Check if FluxCD supports your Kubernetes cluster:
 ```
@@ -61,7 +64,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/homepage.svg">
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/homepage.svg">
         </td>
         <td>
             <a href="https://github.com/gethomepage/homepage">Homepage</a>
@@ -72,7 +75,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" src="https://github.com/meowosaurus/homelab/blob/main/images/nextcloud.png">
+            <img width="32" src="https://github.com/bjsonnen/homelab/blob/main/images/nextcloud.png">
         </td>
         <td>
             <a href="https://nextcloud.com">Nextcloud</a>
@@ -83,7 +86,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/linkding.svg">
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/linkding.svg">
         </td>
         <td>
             <a href="https://github.com/sissbruecker/linkding">linkding</a>
@@ -110,7 +113,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/proxmox.png">
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/rook.svg">
         </td>
         <td>
             <a href="https://rook.io/">Rook</a>
@@ -137,7 +140,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/proxmox.png">
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/proxmox.png">
         </td>
         <td>
             <a href="https://www.proxmox.com/en/">Proxmox</a>
@@ -148,7 +151,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/ubuntu.png" >
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/ubuntu.png" >
         </td>
         <td>
             <a href="https://ubuntu.com/">Ubuntu</a>
@@ -159,7 +162,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/talos.svg" >
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/talos.svg" >
         </td>
         <td>
             <a href="https://talos.dev/">Talos</a>
@@ -170,7 +173,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/k3s.png" >
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/k3s.png" >
         </td>
         <td>
             <a href="https://k3s.io/">k3s</a>
@@ -181,7 +184,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/fluxcd.png" >
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/fluxcd.png" >
         </td>
         <td>
             <a href="https://fluxcd.io/">FluxCD</a>
@@ -192,7 +195,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/helm.svg" >
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/helm.svg" >
         </td>
         <td>
             <a href="helm.sh">Helm</a>
@@ -203,7 +206,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/traefik.svg" >
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/traefik.svg" >
         </td>
         <td>
             <a href="https://github.com/traefik/traefik">traefik</a>
@@ -214,7 +217,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/cloudflare.png">
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/cloudflare.png">
         </td>
         <td>
             <a href="https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/">Cloudflare Tunnel</a>
@@ -225,7 +228,7 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/cncf.svg">
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/cncf.svg">
         </td>
         <td>
             <a href="https://www.cncf.io/projects/sops/">CNCF SOPS</a>
