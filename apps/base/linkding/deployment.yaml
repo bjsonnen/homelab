@@ -31,8 +31,17 @@ spec:
           - secretRef:
               name: linkding-container-env
 
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "256Mi"
+          limits:
+            cpu: "1"
+            memory: "1Gi"
+
         securityContext:
           allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
 
         volumeMounts:
         - mountPath: /etc/linkding/data
