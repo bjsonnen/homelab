@@ -68,7 +68,7 @@ spec:
             
           securityContext:
             runAsNonRoot: true
-            readOnlyRootFilesystem: true
+            readOnlyRootFilesystem: false
             
           ports:
             - name: http
