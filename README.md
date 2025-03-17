@@ -15,7 +15,16 @@ All apps are deployed via GitOps and [FluxCD](https://fluxcd.io/). I picked Flux
 
 ## How to
 
+### General info
+
 - Make sure you have a non-formatted disk on your VM for your Kubernetes cluster. This is required for [Rook](https://rook.io/).
+
+### Setup
+
+Run `./setup.sh`
+
+Or:
+
 - Create a Kubernetes cluster. For example run `talosctl cluster create --workers=3` to create a development Talos Linux cluster with 3 worker nodes and 1 control plane node.
 - Check if FluxCD supports your Kubernetes cluster:
 ```
