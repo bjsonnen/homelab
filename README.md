@@ -113,7 +113,7 @@ I'm currently using the following technologies:
             <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/proxmox.png">
         </td>
         <td>
-            <a href="https://rook.io/">Rook (Ceph)</a>
+            <a href="https://rook.io/">Rook</a>
         </td>
         <td>
             Cloud-native production-ready management for File, Block and Object Storage for Kubernetes.
