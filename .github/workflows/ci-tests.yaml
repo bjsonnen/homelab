@@ -23,6 +23,7 @@ jobs:
           brew install kube-linter
       - name: Check Kubernetes Manifests
         run: | 
+          ls -la
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           kube-linter lint .
           
