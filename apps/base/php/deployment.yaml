@@ -37,7 +37,7 @@ spec:
           runAsUser: 33
           runAsGroup: 33
           runAsNonRoot: true
-          readOnlyRootFilesystem: true
+          readOnlyRootFilesystem: false
           allowPrivilegeEscalation: false
 
       initContainers:
@@ -60,7 +60,7 @@ spec:
 
         securityContext:
           runAsNonRoot: true
-          readOnlyRootFilesystem: true
+          readOnlyRootFilesystem: false
           allowPrivilegeEscalation: false
 
       volumes:
