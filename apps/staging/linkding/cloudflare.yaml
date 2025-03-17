@@ -17,13 +17,25 @@ spec:
         image: cloudflare/cloudflared:2025.2.1
         args:
         - tunnel
-
         # Points cloudflared to the config file, which configures what
         # cloudflared will actually do. This file is created by a ConfigMap
         # below.
         - --config
         - /etc/cloudflared/config/config.yaml
         - run
+
+        securityContext:
+          runAsNonRoot: true
+          readOnlyRootFilesystem: true
+
+        resources:
+          requests:
+            cpu: "1"
+            memory: "1Gi"
+          limits:
+            cpu: "2"
+            memory: "2Gi"
+
         livenessProbe:
           httpGet:
             # Cloudflared has a /ready endpoint which returns 200 if and only if
