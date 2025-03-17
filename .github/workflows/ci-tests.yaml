@@ -25,6 +25,6 @@ jobs:
         run: | 
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           ls ${{ github.workspace }}
-          kube-linter lint .
+          kube-linter lint ${{ github.workspace }}
           
       
