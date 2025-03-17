@@ -119,7 +119,7 @@ I'm currently using the following technologies:
             <a href="https://rook.io/">Rook</a>
         </td>
         <td>
-            Cloud-native production-ready management for File, Block and Object Storage for Kubernetes.
+            Cloud-native production-ready management for <a href="https://aws.amazon.com/compare/the-difference-between-block-file-object-storage/">File, Block and Object Storage</a> for Kubernetes with <a href="https://ceph.io/en/">Ceph</a>.
         </td>
     </tr>
 </table>
