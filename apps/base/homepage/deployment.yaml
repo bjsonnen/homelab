@@ -30,8 +30,8 @@ spec:
         securityContext:
           runAsUser: 1000
           runAsGroup: 1000
+          readOnlyRootFilesystem: false
           allowPrivilegeEscalation: false
-          readOnlyRootFilesystem: true
       
       volumes:
       - name: homepage-config
