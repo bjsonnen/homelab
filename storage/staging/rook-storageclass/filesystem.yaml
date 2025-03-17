@@ -9,7 +9,7 @@ spec:
       size: 1
       requireSafeReplicaSize: false
   dataPools:
-    - name: myfs-data0
+    - name: data0
       failureDomain: osd
       replicated:
         size: 1
