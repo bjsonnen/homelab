@@ -66,7 +66,9 @@ spec:
             - name: NEXTCLOUD_DATA_DIR
               value: "/var/www/html/data"
             
-            
+          securityContext:
+            runAsNonRoot: true
+            readOnlyRootFilesystem: true
             
           ports:
             - name: http
@@ -96,8 +98,15 @@ spec:
           #  timeoutSeconds: 5
           #  successThreshold: 1
           #  failureThreshold: 3
+          
           resources:
-            {}
+            requests:
+              cpu: "1"
+              memory: "1Gi"
+            limits:
+              cpu: "2"
+              memory: "4Gi"
+          
           volumeMounts:
             - name: nextcloud-data
               mountPath: /var/www/
