@@ -27,7 +27,7 @@ spec:
 
         securityContext:
           runAsNonRoot: false
-          readOnlyRootFilesystem: true
+          readOnlyRootFilesystem: false
 
         resources: {}
 
