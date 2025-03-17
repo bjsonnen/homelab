@@ -22,6 +22,14 @@ spec:
         name: homepage
         resources: {}
 
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "256Mi"
+          limits:
+            cpu: "1"
+            memory: "512Mi"
+
         volumeMounts:
         - mountPath: /app/config
           name: homepage-config
