@@ -26,8 +26,8 @@ spec:
             name: mysql-env
 
         securityContext:
-          runAsNonRoot: true
-          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+          readOnlyRootFilesystem: true
 
         resources:
           requests:
