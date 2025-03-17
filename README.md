@@ -94,6 +94,33 @@ I'm currently using the following technologies:
     </tr>
 </table>
 
+### Storage
+
+<table>
+    <tr>
+        <th>
+            Logo
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <img width="32" height="32" src="https://github.com/meowosaurus/homelab/blob/main/images/proxmox.png">
+        </td>
+        <td>
+            <a href="https://rook.io/">Rook (Ceph)</a>
+        </td>
+        <td>
+            Cloud-native production-ready management for File, Block and Object Storage for Kubernetes.
+        </td>
+    </tr>
+</table>
+
 ### System
 
 <table>
