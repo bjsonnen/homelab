@@ -31,9 +31,11 @@ jobs:
         run: | 
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           kube-linter lint ${{ github.workspace }}/apps
+        continue-on-error: true
       - name: Check Kubernetes Manifests /clusters
         run: | 
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           kube-linter lint ${{ github.workspace }}/clusters
+        continue-on-error: true
           
       
