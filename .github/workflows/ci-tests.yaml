@@ -22,5 +22,7 @@ jobs:
           sudo apt update
           brew install kube-linter
       - name: Check Kubernetes Manifests
-        run: kube-linter lint .
+        run: | 
+          kube-linter lint .
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
       
