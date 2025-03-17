@@ -15,7 +15,7 @@ jobs:
         run: |
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew install gcc
-          apt install build-essential
+          sudo apt install build-essential
       - name: Install packages
         run: |
           sudo apt update
