@@ -8,6 +8,11 @@ jobs:
       - name: Install homebrew
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      - name: Install dependencies
+        run: |
+          brew install gcc
+          apt install build-essential
       - name: Install packages
         run: |
           sudo apt update
+      
