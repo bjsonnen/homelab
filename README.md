@@ -135,6 +135,12 @@ I'm currently using the following technologies:
 
 ### System
 
+#### General
+
+Both production and staging use these tools too, but also specific tools to their needs. 
+Because I want to be able to check what's going on in staging, I'm using Ubuntu with k3s. 
+In production, I only want to deploy what's working. Therefore I'm using Talos.
+
 <table>
     <tr>
         <th>
@@ -156,39 +162,6 @@ I'm currently using the following technologies:
         </td>
         <td>
             Enterprise software for virtualization. Used to play around and switch from Ubuntu to for example <a href="https://www.talos.dev/">Talos Linux</a>.
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/ubuntu.png" >
-        </td>
-        <td>
-            <a href="https://ubuntu.com/">Ubuntu</a>
-        </td>
-        <td>
-            An open-source operating system developed by Canonical (Used only in staging).
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/talos.svg" >
-        </td>
-        <td>
-            <a href="https://talos.dev/">Talos</a>
-        </td>
-        <td>
-            An open-source operating systems focused on Kubernetes (Used only in production).
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/k3s.png" >
-        </td>
-        <td>
-            <a href="https://k3s.io/">k3s</a>
-        </td>
-        <td>
-            A secure and lightweight Kubernetes distribution designed for production environments (Only used in staging).
         </td>
     </tr>
     <tr>
@@ -244,6 +217,71 @@ I'm currently using the following technologies:
         </td>
         <td>
             Encrypts and decrypts files like YAML, JSON, ENV, INI, etc. Used for public secrets.
+        </td>
+    </tr>
+</table>
+
+#### Production
+
+<table>
+    <tr>
+        <th>
+            Logo
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/talos.svg" >
+        </td>
+        <td>
+            <a href="https://talos.dev/">Talos</a>
+        </td>
+        <td>
+            An open-source operating systems focused on Kubernetes (Used only in production).
+        </td>
+    </tr>
+</table>
+
+#### Staging
+
+<table>
+    <tr>
+        <th>
+            Logo
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/ubuntu.png" >
+        </td>
+        <td>
+            <a href="https://ubuntu.com/">Ubuntu</a>
+        </td>
+        <td>
+            An open-source operating system developed by Canonical (Used only in staging).
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/k3s.png" >
+        </td>
+        <td>
+            <a href="https://k3s.io/">k3s</a>
+        </td>
+        <td>
+            A secure and lightweight Kubernetes distribution designed for production environments (Only used in staging).
         </td>
     </tr>
 </table>
