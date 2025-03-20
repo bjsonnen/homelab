@@ -17,5 +17,5 @@ parameters:
 reclaimPolicy: Delete
 allowVolumeExpansion: true
 mountOptions:
-  - discard
+#  - discard
   - noatime
