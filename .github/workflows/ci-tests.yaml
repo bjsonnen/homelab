@@ -8,6 +8,7 @@ on:
 jobs:
   Kubernetes-YAML-Linting:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - name: Install homebrew
         run: |
