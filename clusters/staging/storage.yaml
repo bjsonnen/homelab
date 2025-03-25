@@ -1,7 +1,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: storage-base
+  name: longhorn-base
   namespace: flux-system
 spec:
   interval: 1m0s
@@ -10,21 +10,21 @@ spec:
   sourceRef: 
     kind: GitRepository
     name: flux-system
-  path: ./storage/base
+  path: ./storage/base/longhorn
   prune: true
 
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: storage
-  namespace: flux-system
-spec:
-  dependsOn:
-    - name: storage-base
-  interval: 5m
-  path: ./storage/staging
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
+#---
+#apiVersion: kustomize.toolkit.fluxcd.io/v1
+#kind: Kustomization
+#metadata:
+#  name: storage
+#  namespace: flux-system
+#spec:
+#  dependsOn:
+#    - name: storage-base
+#  interval: 5m
+#  path: ./storage/staging
+#  prune: true
+#  sourceRef:
+#    kind: GitRepository
+#    name: flux-system
