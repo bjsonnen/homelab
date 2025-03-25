@@ -4,7 +4,8 @@ metadata:
   name: homepage-config-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
-      storage: 1Gi
+      storage: 5Gi
+  storageClassName: rook-cephfs
