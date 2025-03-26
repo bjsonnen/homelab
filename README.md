@@ -122,13 +122,13 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
-            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/rook.svg">
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/longhorn.svg">
         </td>
         <td>
-            <a href="https://rook.io/">Rook</a>
+            <a href="https://longhorn.io/">Longhorn</a>
         </td>
         <td>
-            Cloud-native production-ready management for <a href="https://aws.amazon.com/compare/the-difference-between-block-file-object-storage/">File, Block and Object Storage</a> for Kubernetes with <a href="https://ceph.io/en/">Ceph</a>.
+            Cloud-native production-ready management for <a href="https://en.wikipedia.org/wiki/Block_(data_storage)">Block Storage</a> for Kubernetes.
         </td>
     </tr>
 </table>
@@ -356,7 +356,3 @@ Through [Proxmox](https://www.proxmox.com/en/) I created 5 VMs with [Talos Linux
 
 Scheduling is deactivated on the control plane node.
 The CNCF SOPS age keys are different than the staging keys.
-
-## Credits
-
-Got the idea to make this repo public from [Mischa Van Den Burg](https://github.com/mischavandenburg/homelab).
