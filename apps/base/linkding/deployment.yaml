@@ -26,9 +26,9 @@ spec:
       - image: sissbruecker/linkding:1.31.0
         name: linkding
 
-        envFrom:
-          - secretRef:
-              name: linkding-container-env
+        #envFrom:
+        #  - secretRef:
+        #      name: linkding-container-env
 
         resources: {}
 
