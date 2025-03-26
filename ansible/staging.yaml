@@ -1,0 +1,108 @@
+- name: Set global variables
+  hosts: all
+  gather_facts: no
+
+  vars_prompt:
+    - name: "r_user"
+      prompt: "Enter the remote username"
+      private: no
+
+    - name: "r_password"
+      prompt: "Enter the remote password"
+      private: yes
+
+  tasks:
+    - name: Set global variables
+      ansible.builtin.set_fact:
+        global_user: "{{ r_user }}"
+        global_password: "{{ r_password }}"
+        global_become_method: sudo
+        global_become_password: "{{ r_password }}"
+        cacheable: yes
+  
+- name: Update APT package
+  hosts: all
+  gather_facts: no
+  become: yes
+
+  vars:
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=accept-new'
+
+    ansible_user: "{{ global_user }}"
+    ansible_password: "{{ global_password }}"
+    ansible_become_method: sudo
+    ansible_become_password: "{{ global_password }}"
+
+  tasks:
+    - name: Test connection
+      ansible.builtin.ping:
+
+    - name: Run apt update
+      ansible.builtin.apt:
+        update_cache: yes
+        upgrade: yes
+
+    # Required for Longhorn
+    - name: Install nfs
+      ansible.builtin.apt:
+        name: nfs-common
+        state: present
+
+    - name: Install k3s requirements
+      ansible.builtin.apt:
+        update_cache: true
+        pkg:
+          - policycoreutils
+        state: present
+
+    - name: Check if k3s is already installed
+      ansible.builtin.shell:
+        cmd: 'test -f /usr/local/bin/k3s'
+      register: k3s_installed
+      failed_when: false
+
+    - name: Download k3s installation script
+      ansible.builtin.uri:
+        url: 'https://get.k3s.io'
+        method: GET
+        return_content: yes
+        dest: '/tmp/k3s_install.sh'
+      when: k3s_installed.rc != 0
+
+    - name: Execute k3s installation script
+      ansible.builtin.shell: |
+        chmod +x /tmp/k3s_install.sh
+        /tmp/k3s_install.sh
+      when: k3s_installed.rc != 0
+
+    - name: Ensure k3s service is running
+      systemd:
+        name: k3s
+        state: started
+        enabled: yes
+
+    - name: Copy k3s config
+      copy:
+        src: /etc/rancher/k3s/k3s.yaml
+        dest: /tmp/config.yaml
+        remote_src: yes
+        mode: '0600'
+
+    - name: Replace k3s config ip
+      ansible.builtin.replace:
+        path: /tmp/config.yaml
+        regexp: 'https://127\.0\.0\.1:6443'
+        replace: 'https://{{ ansible_host }}:6443'
+
+    - name: Change ownership of k3s config
+      ansible.builtin.file:
+        path: /tmp/config.yaml
+        owner: "{{ global_user }}"
+        group: "{{ global_user }}"
+        state: file
+
+    - name: Download k3s config
+      ansible.builtin.fetch:
+        src: /tmp/config.yaml
+        dest: ./config.yaml
+        flat: yes
