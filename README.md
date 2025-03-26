@@ -312,7 +312,7 @@ In production, I only want to deploy what's working. Therefore I'm using Talos.
     </tr>
     <tr>
         <td>
-            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/loupe.svg">
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/kubelinter.svg">
         </td>
         <td>
             <a href="https://github.com/stackrox/kube-linter">KubeLinter</a>
