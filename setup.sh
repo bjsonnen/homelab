@@ -29,6 +29,7 @@ fi
 echo -n "SOPS Private Key: "
 read -rs SOPS_PRIVATE_KEY
 echo ""
+echo ""
 
 echo "=== SETTING UP FLUX CD ==="
 flux bootstrap github \
