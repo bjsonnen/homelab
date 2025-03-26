@@ -66,9 +66,9 @@ spec:
             - name: NEXTCLOUD_DATA_DIR
               value: "/var/www/html/data"
             
-          securityContext:
-            runAsNonRoot: true
-            readOnlyRootFilesystem: false
+          #securityContext:
+          #  runAsNonRoot: true
+          #  readOnlyRootFilesystem: false
             
           ports:
             - name: http
