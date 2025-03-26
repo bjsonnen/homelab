@@ -10,14 +10,13 @@ All apps are deployed via GitOps and [FluxCD](https://fluxcd.io/). I picked Flux
 - Using a public repo forces me to think more about security.
 - All apps are supposed to work in production. First I need a second mini pc for that. 
 - Secrets are stored inside this git repository. All are encrypted. I'm using [CNCF SOPS](https://fluxcd.io/flux/guides/mozilla-sops/) for encryption.
-- Storage is managed through [Rook](https://rook.io/).
-  - Only on the staging cluster with one disk with 100gb. 
+- Storage is managed through [Longhorn](https://longhorn.io/).
 
 ## How to
 
 ### General info
 
-- Make sure you have a non-formatted disk on your VM for your Kubernetes cluster. This is required for [Rook](https://rook.io/).
+- Make sure you install `nfs-common`. It's used with Longhorn.
 
 ### Setup
 
@@ -217,6 +216,17 @@ In production, I only want to deploy what's working. Therefore I'm using Talos.
         </td>
         <td>
             Encrypts and decrypts files like YAML, JSON, ENV, INI, etc. Used for public secrets.
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/ansible.svg">
+        </td>
+        <td>
+            <a href="https://www.ansible.com/">Ansible</a>
+        </td>
+        <td>
+            Used to automate the setup of virtual machines.
         </td>
     </tr>
 </table>
