@@ -16,7 +16,7 @@ All apps are deployed via GitOps and [FluxCD](https://fluxcd.io/). I picked Flux
 
 ### General info
 
-- Make sure you install `nfs-common`. It's used with Longhorn.
+- Make sure you install `nfs-common`. It's used by Longhorn.
 
 ### Setup
 
