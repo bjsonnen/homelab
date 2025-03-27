@@ -329,40 +329,16 @@ There are currently no worker nodes. The operating system is [proxmox](https://w
 
 The reason for proxmox is because I can play around. I can use Ubuntu server or switch to talos for a while.
 
-I'm using a mini pc because:
-- It costs almost as much as a refurbished device.
-- I can add a second SSD with up to 2TB.
-- I can upgrade the RAM to 64GB.
-- I can upgrade the SSD to 2TB.
-- It has a good CPU.
-
 ### Staging
 
 Control Plane Node:
 - Ubuntu 24 VM
   - 4 CPU Cores
-  - 100GB SSD
-  - 4GB RAM
+  - 200GB SSD
+  - 40GB RAM
 
 Scheduling is activated on the control plane node. Only used for testing.
 
 ### Production
 
-Control Plane Node:
-- NiPoGi AM16 Mini PC
-  - AMD Ryzen 5 PRO 5675U (6C/12T)
-  - 2TB NVME SSD
-  - 64GB RAM
-
-Through [Proxmox](https://www.proxmox.com/en/) I created 5 VMs with [Talos Linux](https://www.talos.dev/).
-- Control Plane Node (1)
-  - 2 CPU Cores
-  - 32GB SSD
-  - 2GB RAM
-- Worker Nodes (4)
-  - 2 CPU Cores
-  - 32GB SSD
-  - 2 GB RAM
-
-Scheduling is deactivated on the control plane node.
-The CNCF SOPS age keys are different than the staging keys.
+Currently not used.
