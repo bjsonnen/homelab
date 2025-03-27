@@ -4,8 +4,4 @@ namespace: ollama
 resources:
   - ../../base/ollama/
 
-  #- storage.yaml
-  #- cloudflare.yaml
-  #- cloudflare-secret.yaml
-  #- linkding-container-env-secret.yaml
-  #- ingress.yaml
+  - storage.yaml

@@ -25,7 +25,7 @@ spec:
           protocol: TCP
         env:
         - name: PRELOAD_MODELS
-          value: "llama3.1"
+          value: "gemma3:1b"
         - name: OLLAMA_KEEP_ALIVE
           value: "12h"
         lifecycle:
