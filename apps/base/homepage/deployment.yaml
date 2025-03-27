@@ -52,6 +52,8 @@ spec:
           - mountPath: /app/config/widgets.yaml
             name: homepage-config
             subPath: widgets.yaml
+          - mountPath: /app/config/logs
+            name: homepage-logs
 
         securityContext:
           runAsUser: 1000
@@ -64,8 +66,8 @@ spec:
         configMap:
           name: homepage
 
-      #volumes:
-      #- name: homepage-config
-      #  persistentVolumeClaim:
-      #    claimName: homepage-config-pvc
+      volumes:
+      - name: homepage-logs
+        persistentVolumeClaim:
+          claimName: homepage-logs-pvc
 status: {}
