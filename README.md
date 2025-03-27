@@ -103,6 +103,17 @@ I'm currently using the following technologies:
             linkding is a self-hosted open-source bookmark manager.
         </td>
     </tr>
+    <tr>
+        <td>
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/ollama.svg">
+        </td>
+        <td>
+            <a href="https://github.com/ollama/ollama">Ollama</a>
+        </td>
+        <td>
+            Ollama is a tool for running and managing local AI models.
+        </td>
+    </tr>
 </table>
 
 ### Storage
