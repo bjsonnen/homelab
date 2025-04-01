@@ -4,10 +4,11 @@ metadata:
   name: ollama
   namespace: ollama
 spec:
+  type: ClusterIP
   selector:
     name: ollama
   ports:
-    - name: http
-      port: 11434
-      targetPort: 11434
-      protocol: TCP
+  - port: 80
+    name: http
+    targetPort: http
+    protocol: TCP
