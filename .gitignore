@@ -1,4 +1,4 @@
-images/.DS_Store
+**/.DS_Store
 
 ansible/config.yaml
 ansible/inventory.yaml
