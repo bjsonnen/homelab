@@ -18,10 +18,9 @@ spec:
     replicaCount: 1
     ollama:
       enabled: false
-    env:
+    extraEnvVars:
       - name: OLLAMA_BASE_URL
         value: "http://ollama.ollama.svc.cluster.local:11434"
-    extraEnvVars:
       - name: OLLAMA_API_BASE_URL
         value: "http://ollama.ollama.svc.cluster.local:11434"
       - name: ENABLE_OLLAMA_API
