@@ -4,3 +4,4 @@ namespace: cnpg
 resources:
   - deployment.yaml
   - namespace.yaml
+  - secret.yaml
