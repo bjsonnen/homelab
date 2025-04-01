@@ -1,2 +1,5 @@
 images/.DS_Store
+
+ansible/config.yaml
 ansible/inventory.yaml
+ansible/.ansible_vars.yml
