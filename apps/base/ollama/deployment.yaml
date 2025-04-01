@@ -25,7 +25,8 @@ spec:
           protocol: TCP
         env:
         - name: PRELOAD_MODELS
-          value: "llama3.2"
+          value: "tinyllama"
+          #value: "llama3.2"
         - name: OLLAMA_KEEP_ALIVE
           value: "12h"
         lifecycle:
