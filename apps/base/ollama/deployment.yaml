@@ -25,8 +25,11 @@ spec:
           protocol: TCP
         env:
         - name: PRELOAD_MODELS
-          value: "tinyllama"
-          #value: "llama3.2"
+          valueFrom: 
+            secretKeyRef: 
+              name: ollama-models
+              key: PRELOAD_MODELS
+          #value: "tinyllama"
         - name: OLLAMA_KEEP_ALIVE
           value: "12h"
         lifecycle:
