@@ -17,10 +17,11 @@ All apps are deployed via GitOps and [FluxCD](https://fluxcd.io/). I picked Flux
 ### General info
 
 - Make sure you install `nfs-common`. It's used by Longhorn.
+- To set-up a VM, you can go into the `ansible/` folder and use `ansible-playbook staging.yaml`
 
 ### Setup
 
-Run `./setup.sh`
+Run `.scripts//setup.sh`
 
 Or:
 
@@ -105,13 +106,24 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/open-webui.svg">
+        </td>
+        <td>
+            <a href="https://github.com/open-webui/open-webui">Open-WebUI</a>
+        </td>
+        <td>
+            Open-WebUI makes use of Ollama to offer a web-interface for accessing local LLMs.
+        </td>
+    </tr>
+    <tr>
+        <td>
             <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/ollama.svg">
         </td>
         <td>
             <a href="https://github.com/ollama/ollama">Ollama</a>
         </td>
         <td>
-            Ollama is a tool for running and managing local AI models.
+            Ollama is a tool for running and managing local open-source AI models. It's using the <a href="https://ollama.com/library/tinyllama">Tinyllama</a> model.
         </td>
     </tr>
 </table>
