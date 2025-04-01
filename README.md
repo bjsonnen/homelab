@@ -128,6 +128,33 @@ I'm currently using the following technologies:
     </tr>
 </table>
 
+### Database
+
+<table>
+    <tr>
+        <th>
+            Logo
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/snpg.svg">
+        </td>
+        <td>
+            <a href="https://cloudnative-pg.io/">CloudNativePG</a>
+        </td>
+        <td>
+            A cloud-native Kubernetes operator for the PostgreSQL database.
+        </td>
+    </tr>
+</table>
+
 ### Storage
 
 <table>
