@@ -1,37 +1,46 @@
-- name: Set global variables
-  hosts: all
-  gather_facts: no
-
+- name: Set variables on localhost
+  hosts: localhost
+  connection: local
   vars_prompt:
     - name: "r_user"
-      prompt: "Enter the remote username"
+      prompt: "Enter username"
       private: no
-
     - name: "r_password"
-      prompt: "Enter the remote password"
+      prompt: "Enter sudo password"
+      private: yes
+    - name: "r_github_token"
+      prompt: "Enter GitHub token"
+      private: yes
+    - name: "r_sops_key"
+      prompt: "Enter SOPS key"
       private: yes
 
   tasks:
-    - name: Set global variables
-      ansible.builtin.set_fact:
-        global_user: "{{ r_user }}"
-        global_password: "{{ r_password }}"
-        global_become_method: sudo
-        global_become_password: "{{ r_password }}"
-        cacheable: yes
-  
-- name: Update APT package
-  hosts: all
-  gather_facts: no
+    - name: Store variables
+      ansible.builtin.copy:
+        content: |
+          ---
+          global_user: "{{ r_user }}"
+          global_password: "{{ r_password }}"
+          global_become_method: sudo
+          global_become_password: "{{ r_password }}"
+          global_github_token: "{{ r_github_token }}"
+          global_sops_key: "{{ r_sops_key }}"
+        dest: "./.ansible_vars.yml"
+        mode: '0600'
+
+- name: Setup Kubernetes Cluster
+  hosts: staging
   become: yes
-
+  vars_files:
+    - "./.ansible_vars.yml"
   vars:
-    ansible_ssh_common_args: '-o StrictHostKeyChecking=accept-new'
-
     ansible_user: "{{ global_user }}"
     ansible_password: "{{ global_password }}"
-    ansible_become_method: sudo
-    ansible_become_password: "{{ global_password }}"
+    ansible_become_method: "{{ global_become_method }}"
+    ansible_become_password: "{{ global_become_password }}"
+
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=accept-new'
 
   tasks:
     - name: Test connection
@@ -106,3 +115,44 @@
         src: /tmp/config.yaml
         dest: ./config.yaml
         flat: yes
+
+- name: Setup FluxCD and SOPS
+  hosts: localhost
+  vars_files:
+    - "./.ansible_vars.yml"
+  vars:
+    ansible_user: "{{ global_user }}"
+    ansible_password: "{{ global_password }}"
+    ansible_become_method: "{{ global_become_method }}"
+    ansible_become_password: "{{ global_become_password }}"
+    c_github_token: "{{ global_github_token }}"
+    c_sops_key: "{{ global_sops_key }}"
+
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=accept-new'
+
+  tasks:
+    - name: Check if FluxCD is installable
+      ansible.builtin.shell:
+        cmd: 'flux check --pre'
+      environment:
+        KUBECONFIG: "./config.yaml"
+      register: flux_check
+
+    - name: Verify FluxCD prerequisites passed
+      ansible.builtin.debug:
+        msg: "FluxCD prerequisites checks passed!"
+      when: "'prerequisites checks passed' in flux_check.stdout"
+      failed_when: false
+
+    - name: Install FluxCD operator
+      ansible.builtin.shell:
+        cmd: 'flux bootstrap github --owner=bjsonnen --repository=homelab --branch=main --path=./clusters/staging --personal'
+      environment:
+        KUBECONFIG: "./config.yaml"
+        GITHUB_TOKEN: "{{ c_github_token }}"
+
+    - name: Add SOPS private key
+      ansible.builtin.shell:
+        cmd: 'kubectl create secret generic sops-age --namespace=flux-system --from-literal=age.agekey={{ global_sops_key }}'
+      environment:
+        KUBECONFIG: "./config.yaml"
