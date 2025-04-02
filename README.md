@@ -92,7 +92,7 @@ I'm currently using the following technologies:
             <a href="https://github.com/open-webui/open-webui">Open-WebUI</a>
         </td>
         <td>
-            Open-WebUI makes use of Ollama to offer a web-interface for accessing local LLMs. It's using <a href="https://longhorn.io/">Longhorn</a> for storage.
+            Open-WebUI makes use of Ollama to offer a web-interface for accessing local LLMs. It's using <a href="https://longhorn.io/">Longhorn</a> for storage. Flux uses <a href="https://helm.sh/">Helm</a> to install it.
         </td>
     </tr>
     <tr>
@@ -103,7 +103,7 @@ I'm currently using the following technologies:
             <a href="https://github.com/ollama/ollama">Ollama</a>
         </td>
         <td>
-            Ollama is a tool for running and managing local open-source AI models. It's using the <a href="https://ollama.com/library/tinyllama">Tinyllama</a> model. It's using <a href="https://longhorn.io/">Longhorn</a> for storage.
+            Ollama is a tool for running and managing local open-source AI models. It's using the <a href="https://ollama.com/library/tinyllama">Tinyllama</a> model and <a href="https://longhorn.io/">Longhorn</a> for storage.
         </td>
     </tr>
 </table>
@@ -186,7 +186,7 @@ I'm currently using the following technologies:
             <a href="https://talos.dev/">Talos</a>
         </td>
         <td>
-            An open-source operating systems focused on Kubernetes.
+            Talos Linux is a minimal, hardened, immutable, and open-source Linux distribution designed for Kubernetes.
         </td>
     </tr>
 </table>
@@ -213,7 +213,7 @@ I'm currently using the following technologies:
             <a href="https://k3s.io/">k3s</a>
         </td>
         <td>
-            A secure and lightweight Kubernetes distribution designed for production environments.
+            K3s is a highly available Kubernetes distribution designed for production workloads in unattended, resource-constrained, remote locations or inside IoT appliances.
         </td>
     </tr>
     <tr>
@@ -224,7 +224,7 @@ I'm currently using the following technologies:
             <a href="https://ubuntu.com/">Ubuntu</a>
         </td>
         <td>
-            An open-source operating system developed by Canonical.
+            Ubuntu is the modern, open-source operating-system on Linux for the enterprise server, desktop, cloud, and IoT by Canonical.
         </td>
     </tr>
 </table>
