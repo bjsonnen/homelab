@@ -4,5 +4,6 @@ namespace: ollama
 resources:
   - ../../base/ollama/
 
+  - deployment.yaml
   - storage.yaml
   - preload-models-secret.yaml
