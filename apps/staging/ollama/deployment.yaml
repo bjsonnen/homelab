@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+  namespace: ollama
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: ollama
+  template:
+    metadata:
+      labels:
+        name: ollama
+    spec:
+      containers:
+      - name: ollama
+        image: ollama/ollama:0.6.2
+        volumeMounts:
+          - mountPath: /root/.ollama
+            name: ollama-data
+        ports:
+        - name: http
+          containerPort: 11434
+          protocol: TCP
+
+        resources:
+          limits:
+            cpu: "8"
+            memory: "10Gi"
+
+        env:
+        - name: PRELOAD_MODELS
+          valueFrom: 
+            secretKeyRef: 
+              name: ollama-models
+              key: PRELOAD_MODELS
+          #value: "tinyllama"
+        - name: OLLAMA_KEEP_ALIVE
+          value: "12h"
+        lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "for model in $PRELOAD_MODELS; do ollama run $model \"\"; done"]
+      volumes:
+      - name: ollama-data
+        persistentVolumeClaim:
+          claimName: ollama-data-pvc 
