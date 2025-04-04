@@ -34,33 +34,33 @@ spec:
           image: nextcloud:30.0.4-apache
           imagePullPolicy: IfNotPresent
           env:
-            - name: MYSQL_HOST
-              value: "mysql"
-            - name: MYSQL_USER
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-env
-                  key: MYSQL_USER 
-            - name: MYSQL_DATABASE
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-env
-                  key: MYSQL_DATABASE
-            - name: MYSQL_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-env
-                  key: MYSQL_PASSWORD
-            - name: NEXTCLOUD_ADMIN_USER
-              valueFrom:
-                secretKeyRef:
-                  name: nextcloud
-                  key: nextcloud-username
-            - name: NEXTCLOUD_ADMIN_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: nextcloud
-                  key: nextcloud-password
+            #- name: MYSQL_HOST
+            #  value: "mysql"
+            #- name: MYSQL_USER
+            #  valueFrom:
+            #    secretKeyRef:
+            #      name: mysql-env
+            #      key: MYSQL_USER 
+            #- name: MYSQL_DATABASE
+            #  valueFrom:
+            #    secretKeyRef:
+            #      name: mysql-env
+            #      key: MYSQL_DATABASE
+            #- name: MYSQL_PASSWORD
+            #  valueFrom:
+            #    secretKeyRef:
+            #      name: mysql-env
+            #      key: MYSQL_PASSWORD
+            #- name: NEXTCLOUD_ADMIN_USER
+            #  valueFrom:
+            #    secretKeyRef:
+            #      name: nextcloud
+            #      key: nextcloud-username
+            #- name: NEXTCLOUD_ADMIN_PASSWORD
+            #  valueFrom:
+            #    secretKeyRef:
+            #      name: nextcloud
+            #      key: nextcloud-password
             - name: NEXTCLOUD_TRUSTED_DOMAINS
               value: nextcloud.kube.home
             - name: NEXTCLOUD_DATA_DIR
