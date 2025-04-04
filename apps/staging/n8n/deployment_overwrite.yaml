@@ -26,6 +26,7 @@ spec:
           mountPath: /home/node/.n8n
       containers:
       - image: n8nio/n8n:latest
+        name: n8n
 
         env:
         - name: DB_TYPE
