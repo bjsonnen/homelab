@@ -8,8 +8,8 @@ spec:
 
   bootstrap:
     initdb:
-      database: pgapp
-      owner: pgapp
+      database: app
+      owner: app
       #ownerPassword: pgapp!
       #postgresPassword: adminpass
       secret:
