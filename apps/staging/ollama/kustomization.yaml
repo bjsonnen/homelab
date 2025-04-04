@@ -4,6 +4,9 @@ namespace: ollama
 resources:
   - ../../base/ollama/
 
-  - deployment.yaml
+  #- deployment.yaml
   - storage.yaml
   - preload-models-secret.yaml
+
+patchStrategicMerge:
+  - deployment_overwrite.yaml

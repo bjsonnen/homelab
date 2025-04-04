@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ollama
+  namespace: ollama
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: ollama
+  template:
+    metadata:
+      labels:
+        name: ollama
+    spec:
+      containers:
+      - name: ollama
+
+        resources:
+          limits:
+            cpu: "8"
+            memory: "10Gi"
+
+        env:
+        - name: PRELOAD_MODELS
+          valueFrom: 
+            secretKeyRef: 
+              name: ollama-models
+              key: PRELOAD_MODELS
+        - name: OLLAMA_KEEP_ALIVE
+          value: "12h"
