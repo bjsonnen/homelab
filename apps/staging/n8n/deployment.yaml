@@ -29,7 +29,7 @@ spec:
         - name: DB_POSTGRESDB_HOST
           value: "n8n-postgresql-rw.n8n-postgresql.svc.cluster.local"
         - name: DB_POSTGRESDB_PORT
-          value: 5432
+          value: "5432"
         - name: DB_POSTGRESDB_USER
           value: "n8n"
         - name: DB_POSTGRESDB_PASSWORD
