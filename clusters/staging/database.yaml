@@ -10,5 +10,5 @@ spec:
   sourceRef: 
     kind: GitRepository
     name: cnpg-system
-  path: ./storage/base/longhorn
+  path: ./databases/cnpg-system
   prune: true
