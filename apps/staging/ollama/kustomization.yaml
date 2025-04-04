@@ -8,5 +8,5 @@ resources:
   - storage.yaml
   - preload-models-secret.yaml
 
-patchStrategicMerge:
+patchesStrategicMerge:
   - deployment_overwrite.yaml
