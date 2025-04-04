@@ -34,6 +34,14 @@ spec:
           image: nextcloud:30.0.4-apache
           imagePullPolicy: IfNotPresent
           env:
+            - name: POSTGRES_DB
+              value: "app"
+            - name: POSTGRES_USER
+              value: "app"
+            - name: POSTGRES_PASSWORD
+              value: "password"
+            - name: POSTGRES_HOST
+              value: "nextcloud-postgresql-rw.cnpg.svc.cluster.local"
             #- name: MYSQL_HOST
             #  value: "mysql"
             #- name: MYSQL_USER
