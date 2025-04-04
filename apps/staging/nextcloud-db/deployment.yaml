@@ -8,8 +8,8 @@ spec:
 
   bootstrap:
     initdb:
-      database: app
-      owner: app
+      database: nextcloud
+      owner: nextcloud
       secret:
         name: app-secret
 

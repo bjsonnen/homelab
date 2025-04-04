@@ -35,40 +35,26 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: POSTGRES_DB
-              value: "app"
+              value: "nextcloud"
             - name: POSTGRES_USER
-              value: "app"
+              value: "nextcloud"
             - name: POSTGRES_PASSWORD
-              value: "password"
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-secrets
+                  key: db-password
             - name: POSTGRES_HOST
               value: "nextcloud-postgresql-rw.nextcloud-postgresql.svc.cluster.local"
-            #- name: MYSQL_HOST
-            #  value: "mysql"
-            #- name: MYSQL_USER
-            #  valueFrom:
-            #    secretKeyRef:
-            #      name: mysql-env
-            #      key: MYSQL_USER 
-            #- name: MYSQL_DATABASE
-            #  valueFrom:
-            #    secretKeyRef:
-            #      name: mysql-env
-            #      key: MYSQL_DATABASE
-            #- name: MYSQL_PASSWORD
-            #  valueFrom:
-            #    secretKeyRef:
-            #      name: mysql-env
-            #      key: MYSQL_PASSWORD
-            #- name: NEXTCLOUD_ADMIN_USER
-            #  valueFrom:
-            #    secretKeyRef:
-            #      name: nextcloud
-            #      key: nextcloud-username
-            #- name: NEXTCLOUD_ADMIN_PASSWORD
-            #  valueFrom:
-            #    secretKeyRef:
-            #      name: nextcloud
-            #      key: nextcloud-password
+            - name: NEXTCLOUD_ADMIN_USER
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-secrets
+                  key: nextcloud-username
+            - name: NEXTCLOUD_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: nextcloud-secrets
+                  key: nextcloud-password
             - name: NEXTCLOUD_TRUSTED_DOMAINS
               value: nextcloud.kube.home
             - name: NEXTCLOUD_DATA_DIR
