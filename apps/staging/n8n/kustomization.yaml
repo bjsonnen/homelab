@@ -4,3 +4,4 @@ namespace: n8n
 resources:
   - deployment.yaml
   - namespace.yaml
+  - secrets.yaml
