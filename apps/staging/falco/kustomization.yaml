@@ -4,4 +4,4 @@ namespace: falco
 resources:
   - namespace.yaml
   - repository.yaml
-  - release.yaml
+  #- release.yaml
