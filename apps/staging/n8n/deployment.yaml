@@ -17,6 +17,13 @@ spec:
       labels:
         app: n8n
     spec:
+      initContainers:
+      - name: fix-permissions
+        image: busybox
+        command: ["sh", "-c", "chown -R 1000:1000 /home/node/.n8n"]
+        volumeMounts:
+        - name: n8n-data
+          mountPath: /home/node/.n8n
       containers:
       - image: n8nio/n8n:latest
         name: n8n
