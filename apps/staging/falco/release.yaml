@@ -7,7 +7,7 @@ spec:
   interval: 1m
   chart:
     spec:
-      chart: open-webui
+      chart: falco
       version: "0.10.1"
       sourceRef:
         kind: HelmRepository
