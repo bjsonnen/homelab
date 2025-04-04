@@ -26,12 +26,6 @@ spec:
           mountPath: /home/node/.n8n
       containers:
       - image: n8nio/n8n:latest
-        name: n8n
-        resources: {}
-  
-        volumeMounts:
-        - mountPath: /home/node/.n8n
-          name: n8n-data
 
         env:
         - name: DB_TYPE
@@ -49,9 +43,4 @@ spec:
             secretKeyRef:
               name: n8n-secrets
               key: database-password
-
-      volumes:
-      - name: n8n-data
-        persistentVolumeClaim:
-          claimName: n8n-data-pvc
 status: {}

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: n8n
+  name: n8n
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: n8n
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: n8n
+    spec:
+      initContainers:
+      - name: fix-permissions
+        image: busybox
+        command: ["sh", "-c", "chown -R 1000:1000 /home/node/.n8n"]
+        volumeMounts:
+        - name: n8n-data
+          mountPath: /home/node/.n8n
+      containers:
+      - image: n8nio/n8n:latest
+        name: n8n
+        resources: {}
+  
+        volumeMounts:
+        - mountPath: /home/node/.n8n
+          name: n8n-data
+
+      volumes:
+      - name: n8n-data
+        persistentVolumeClaim:
+          claimName: n8n-data-pvc
+status: {}
