@@ -4,4 +4,14 @@ metadata:
   name: nextcloud-postgresql
   namespace: nextcloud-postgresql
 spec:
-  instances: 1
+  instances: 3
+
+  bootstrap:
+    initdb:
+      database: nextcloud
+      owner: nextcloud
+      secret:
+        name: app-secret
+
+  storage:
+    size: 1Gi
