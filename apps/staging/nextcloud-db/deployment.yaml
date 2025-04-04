@@ -1,8 +1,8 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: cn-postgresql-example
-  namespace: cnpg
+  name: nextcloud-postgresql
+  namespace: nextcloud-postgresql
 spec:
   instances: 1
 
@@ -10,10 +10,8 @@ spec:
     initdb:
       database: app
       owner: app
-      #ownerPassword: pgapp!
-      #postgresPassword: adminpass
       secret:
-        name: pgapp-secret
+        name: app-secret
 
   storage:
     size: 1Gi
