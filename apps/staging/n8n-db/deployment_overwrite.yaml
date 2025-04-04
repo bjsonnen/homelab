@@ -1,0 +1,7 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: n8n-postgresql
+  namespace: n8n-postgresql
+spec:
+  instances: 1
