@@ -22,19 +22,19 @@ spec:
         name: n8n
         resources: {}
       env:
-      - name: DB_TYPE
-        value: "postgresdb"
-      - name: DB_POSTGRESDB_DATABASE
-        value: "n8n"
-      - name: DB_POSTGRESDB_HOST
-        value: "n8n-postgresql-rw.n8n-postgresql.svc.cluster.local"
-      - name: DB_POSTGRESDB_PORT
-        value: 5432
-      - name: DB_POSTGRESDB_USER
-        value: "n8n"
-      - name: DB_POSTGRESDB_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: n8n-secrets
-            key: database-password
+        - name: DB_TYPE
+          value: "postgresdb"
+        - name: DB_POSTGRESDB_DATABASE
+          value: "n8n"
+        - name: DB_POSTGRESDB_HOST
+          value: "n8n-postgresql-rw.n8n-postgresql.svc.cluster.local"
+        - name: DB_POSTGRESDB_PORT
+          value: 5432
+        - name: DB_POSTGRESDB_USER
+          value: "n8n"
+        - name: DB_POSTGRESDB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: n8n-secrets
+              key: database-password
 status: {}
