@@ -86,6 +86,17 @@ I'm currently using the following technologies:
     </tr>
     <tr>
         <td>
+            <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/n8n.svg">
+        </td>
+        <td>
+            <a href="https://n8n.io/">n8n</a>
+        </td>
+        <td>
+            n8n is a workflow automation platform that combines AI capabilities with business process automation. n8n is using <a href="https://longhorn.io/">Longhorn</a> for storage. On top, it uses <a href="https://cloudnative-pg.io/">CloudNativePG</a> for it's database.
+        </td>
+    </tr>
+    <tr>
+        <td>
             <img width="32" height="32" src="https://github.com/bjsonnen/homelab/blob/main/images/open-webui.svg">
         </td>
         <td>
