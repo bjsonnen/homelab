@@ -41,7 +41,7 @@ spec:
             - name: POSTGRES_PASSWORD
               value: "password"
             - name: POSTGRES_HOST
-              value: "nextcloud-postgresql-rw.cnpg.svc.cluster.local"
+              value: "nextcloud-postgresql-rw.nextcloud-postgresql.svc.cluster.local"
             #- name: MYSQL_HOST
             #  value: "mysql"
             #- name: MYSQL_USER
