@@ -10,10 +10,10 @@ spec:
     initdb:
       database: pgapp
       owner: pgapp
-      ownerPassword: pgapp!
-      postgresPassword: adminpass
-      #secret:
-      #  name: pgapp-secret
+      #ownerPassword: pgapp!
+      #postgresPassword: adminpass
+      secret:
+        name: pgapp-secret
 
   storage:
     size: 1Gi
