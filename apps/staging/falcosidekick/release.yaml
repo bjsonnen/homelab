@@ -12,7 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: falcosecurity
-        namespace: falcosidekick
-  targetNamespace: falcosidekick
+        namespace: falcosecurity
+  targetNamespace: falcosecurity
   values:
     replicaCount: 1
