@@ -1,8 +1,8 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: falco2
-  namespace: falco2
+  name: falco
+  namespace: falcosidekick
 spec:
   interval: 1m
   chart:
