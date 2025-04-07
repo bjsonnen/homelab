@@ -1,8 +1,0 @@
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: falcosidekick
-  namespace: falcosidekick
-spec:
-  interval: 1m
-  url: https://falcosecurity.github.io/charts
