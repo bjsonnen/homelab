@@ -121,10 +121,6 @@
   vars_files:
     - "./.ansible_vars.yml"
   vars:
-    ansible_user: "{{ global_user }}"
-    ansible_password: "{{ global_password }}"
-    ansible_become_method: "{{ global_become_method }}"
-    ansible_become_password: "{{ global_become_password }}"
     c_github_token: "{{ global_github_token }}"
     c_sops_key: "{{ global_sops_key }}"
 
@@ -156,3 +152,11 @@
         cmd: 'kubectl create secret generic sops-age --namespace=flux-system --from-literal=age.agekey={{ global_sops_key }}'
       environment:
         KUBECONFIG: "./config.yaml"
+
+    - name: Get current working directory
+      ansible.builtin.command: pwd
+      register: pwd_output
+
+    - name: Recommend to export KUBECONFIG
+      ansible.builtin.debug:
+        msg: 'Please run: export KUBECONFIG={{ pwd_output.stdout }}/config.yaml'
