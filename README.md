@@ -382,4 +382,16 @@ Scheduling is activated on the control plane node. Only used for testing.
 
 ### Production
 
-Currently not used.
+Control Plane Nodes:
+- 3x Talos Linux VM:
+  - 4 CPU Cores
+  - 50GB SSD
+  - 4GB RAM
+
+Worker Nodes:
+- 4x Talos Linux VM:
+  - 3 CPU Cores
+  - 50GB SSD
+  - 3GB RAM
+
+Scheduling is deactivated on the control plane nodes.
