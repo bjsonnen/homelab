@@ -2,7 +2,9 @@
 
 ansible/staging/inventory.yaml
 ansible/staging/config.yaml
+ansible/staging/.ansible_vars.yaml
 ansible/staging/.ansible_vars.yml
 ansible/production/inventory.yaml
 ansible/production/.ansible_vars.yaml
+ansible/production/.ansible_vars.yml
 ansible/production/configs/
