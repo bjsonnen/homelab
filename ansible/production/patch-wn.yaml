@@ -1,11 +1,11 @@
 machine:
   network:
-    hostname: "controlplane-{{ control_index }}"
+    hostname: "worker-{{ worker_index }}"
     interfaces:
       - deviceSelector:
           busPath: "0*"
         addresses:
-          - "{{ control_ip }}/24"
+          - "{{ worker_ip }}/24"
         routes:
           - network: 0.0.0.0/0
             gateway: 192.168.2.1

@@ -1,40 +1,45 @@
-- name: Set variables on localhost
-  hosts: localhost
-  connection: local
-  vars_prompt:
-    - name: "r_github_token"
-      prompt: "Enter GitHub token"
-      private: yes
-    - name: "r_sops_key"
-      prompt: "Enter SOPS key"
-      private: yes
+#- name: Set variables on localhost
+#  hosts: localhost
+#  connection: local
+#  vars_prompt:
+#    - name: "r_github_token"
+#      prompt: "Enter GitHub token"
+#      private: yes
+#    - name: "r_sops_key"
+#      prompt: "Enter SOPS key"
+#      private: yes
 
-  tasks:
-    - name: Store variables
-      ansible.builtin.copy:
-        content: |
-          ---
-          global_github_token: "{{ r_github_token }}"
-          global_sops_key: "{{ r_sops_key }}"
-        dest: "./.ansible_vars.yml"
-        mode: '0600'
+#  tasks:
+#    - name: Store variables
+#      ansible.builtin.copy:
+#        content: |
+#          ---
+#          global_github_token: "{{ r_github_token }}"
+#          global_sops_key: "{{ r_sops_key }}"
+#        dest: "./.ansible_vars.yml"
+#        mode: '0600'
 
-- name: Install Talos Linux
+- name: Install Initial Talos Control Plane Node
   hosts: localhost
   connection: local
 
   tasks:
     - name: Generate Talos config files
       ansible.builtin.shell:
-        cmd: "talosctl gen config k8s-prod https://{{ groups['cpn'][0] }}:6443 --config-patch @patch-cpn.yaml -o configs/"
+        cmd: "talosctl gen config k8s-prod https://{{ groups['cpn'][0] }}:6443 --config-patch-control-plane @patch-cpn.yaml --config-patch-worker @patch-wn.yaml -o configs/"
+
+    - name: Generate controlplane-1.yaml
+      ansible.builtin.template:
+        src: configs/controlplane.yaml
+        dest: "configs/controlplane-1.yaml"
+        mode: '0644'
+      vars:
+        control_ip: "{{ groups['cpn'][0] }}"
+        control_index: "1"
 
     - name: Apply Talos config files
       ansible.builtin.shell:
-        cmd: "talosctl apply-config --insecure -n {{ groups['cpn'][0] }} --file configs/controlplane.yaml"
-
-    #- name: Wait for install process to complete
-    #  ansible.builtin.pause:
-    #    minutes: 2
+        cmd: "talosctl apply-config --insecure -n {{ groups['cpn'][0] }} --file configs/controlplane-1.yaml"
     
     - name: Wait for Talos to install
       ansible.builtin.wait_for:
@@ -53,3 +58,46 @@
       ansible.builtin.shell:
         cmd: "talosctl kubeconfig --nodes {{ groups['cpn'][0] }} --endpoints {{ groups['cpn'][0] }} --talosconfig=./configs/talosconfig"
 
+## DOESNT WORK
+
+- name: Install Talos Control Plane Nodes
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: Generate controlplane.yaml
+      ansible.builtin.template:
+        src: configs/controlplane.yaml
+        dest: "configs/controlplane-{{ item.1 + 1 }}.yaml"
+        mode: '0644'
+      loop: "{{ groups['cpn'][1:] | zip(range(1, groups['cpn'] | length)) | list }}"
+      vars:
+        control_ip: "{{ item.0 }}"
+        control_index: "{{ item.1 + 1 }}"
+
+    - name: Apply Talos config file
+      ansible.builtin.shell:
+        cmd: "talosctl apply-config --insecure -n {{ item.0 }} --file configs/controlplane-{{ item.1 + 2 }}.yaml"
+      loop: "{{ groups['cpn'][1:] | zip(range(groups['cpn'] | length)) | list }}"
+
+## WORKS
+
+- name: Install Talos Worker Nodes
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: Generate worker.yaml
+      ansible.builtin.template:
+        src: configs/worker.yaml
+        dest: "configs/worker-{{ item.1 + 1}}.yaml"
+        mode: '0644'
+      loop: "{{ groups['wn'] | zip(range(groups['wn'] | length)) | list }}"
+      vars:
+        worker_ip: "{{ item.0 }}"
+        worker_index: "{{ item.1 + 1 }}"
+
+    - name: Apply Talos config file
+      ansible.builtin.shell:
+        cmd: "talosctl apply-config --insecure -n {{ item.0 }} --file configs/worker-{{ item.1 + 1 }}.yaml"
+      loop: "{{ groups['wn'] | zip(range(groups['wn'] | length)) | list }}"
