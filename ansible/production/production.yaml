@@ -26,17 +26,30 @@
   tasks:
     - name: Generate Talos config files
       ansible.builtin.shell:
-        cmd: "talosctl gen config k8s-prod https://{{ groups['cpn'][0] }}:6443 -o configs/"
+        cmd: "talosctl gen config k8s-prod https://{{ groups['cpn'][0] }}:6443 --config-patch @patch-cpn.yaml -o configs/"
 
-    #- name: Apply Talos config files
-    #  ansible.builtin.shell:
-    #    cmd: "talosctl apply-config --insecure -n {{ groups['production'][0] }} --file configs/controlplane.yaml"
+    - name: Apply Talos config files
+      ansible.builtin.shell:
+        cmd: "talosctl apply-config --insecure -n {{ groups['cpn'][0] }} --file configs/controlplane.yaml"
 
     #- name: Wait for install process to complete
     #  ansible.builtin.pause:
     #    minutes: 2
+    
+    - name: Wait for Talos to install
+      ansible.builtin.wait_for:
+        host: "{{ groups['cpn'][0] }}"
+        port: 50000
+        state: started
+        delay: 5
+        connect_timeout: 5
+        timeout: 3600
 
-    #- name: Bootstrap Kubernetes Cluster
-    #  ansible.builtin.shell: 
-    #    cmd: "talosctl bootstrap --nodes {{ groups['production'][0] }} --endpoints {{ groups['production'][0] }} --talosconfig=./config/talosconfig"
+    - name: Bootstrap Kubernetes Cluster
+      ansible.builtin.shell: 
+        cmd: "talosctl bootstrap --nodes {{ groups['cpn'][0] }} --endpoints {{ groups['cpn'][0] }} --talosconfig=./configs/talosconfig"
+
+    - name: Download kubeconfig
+      ansible.builtin.shell:
+        cmd: "talosctl kubeconfig --nodes {{ groups['cpn'][0] }} --endpoints {{ groups['cpn'][0] }} --talosconfig=./configs/talosconfig"
 

@@ -1,5 +1,8 @@
 **/.DS_Store
 
-ansible/config.yaml
-ansible/inventory.yaml
-ansible/.ansible_vars.yml
+ansible/staging/inventory.yaml
+ansible/staging/config.yaml
+ansible/staging/.ansible_vars.yml
+ansible/production/inventory.yaml
+ansible/production/.ansible_vars.yaml
+ansible/production/configs/
