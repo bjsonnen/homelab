@@ -1,0 +1,56 @@
+- name: Set variables on localhost
+  hosts: localhost
+  connection: local
+  vars_prompt:
+    - name: "r_user"
+      prompt: "Enter username"
+      private: no
+    - name: "r_password"
+      prompt: "Enter sudo password"
+      private: yes
+
+  tasks:
+    - name: Store variables
+      ansible.builtin.copy:
+        content: |
+          ---
+          global_user: "{{ r_user }}"
+          global_password: "{{ r_password }}"
+          global_become_method: sudo
+          global_become_password: "{{ r_password }}"
+        dest: "./.ansible_vars.yml"
+        mode: '0600'
+
+- name: Setup Kubernetes Cluster
+  hosts: staging
+  become: yes
+  vars_files:
+    - "./.ansible_vars.yml"
+  vars:
+    ansible_user: "{{ global_user }}"
+    ansible_password: "{{ global_password }}"
+    ansible_become_method: "{{ global_become_method }}"
+    ansible_become_password: "{{ global_become_password }}"
+
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=accept-new'
+
+  tasks:
+    - name: Test connection
+      ansible.builtin.ping:
+
+    #- name: Unmount longhorn volumes
+    #  ansible.builtin.shell: 
+    #    cmd: 'umount /var/lib/longhorn/dev/* 2>/dev/null'
+      
+      #|
+        #umount /var/lib/longhorn/dev/* 2>/dev/null
+        #umount /dev/longhorn/* 2>/dev/null
+
+    #- name: Remove longhorn volumes
+    #  ansible.builtin.shell: |
+    #    rm -rf /var/lib/longhorn
+    #    rm -rf /dev/longhorn
+
+    - name: Uninstall k3s
+      ansible.builtin.shell:
+        cmd: '/usr/local/bin/k3s-uninstall.sh'

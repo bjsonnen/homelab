@@ -1,0 +1,42 @@
+- name: Set variables on localhost
+  hosts: localhost
+  connection: local
+  vars_prompt:
+    - name: "r_github_token"
+      prompt: "Enter GitHub token"
+      private: yes
+    - name: "r_sops_key"
+      prompt: "Enter SOPS key"
+      private: yes
+
+  tasks:
+    - name: Store variables
+      ansible.builtin.copy:
+        content: |
+          ---
+          global_github_token: "{{ r_github_token }}"
+          global_sops_key: "{{ r_sops_key }}"
+        dest: "./.ansible_vars.yml"
+        mode: '0600'
+
+- name: Install Talos Linux
+  hosts: localhost
+  connection: local
+
+  tasks:
+    - name: Generate Talos config files
+      ansible.builtin.shell:
+        cmd: "talosctl gen config k8s-prod https://{{ groups['cpn'][0] }}:6443 -o configs/"
+
+    #- name: Apply Talos config files
+    #  ansible.builtin.shell:
+    #    cmd: "talosctl apply-config --insecure -n {{ groups['production'][0] }} --file configs/controlplane.yaml"
+
+    #- name: Wait for install process to complete
+    #  ansible.builtin.pause:
+    #    minutes: 2
+
+    #- name: Bootstrap Kubernetes Cluster
+    #  ansible.builtin.shell: 
+    #    cmd: "talosctl bootstrap --nodes {{ groups['production'][0] }} --endpoints {{ groups['production'][0] }} --talosconfig=./config/talosconfig"
+
