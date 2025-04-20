@@ -26,12 +26,17 @@ All apps are deployed via GitOps and [FluxCD](https://fluxcd.io/). I picked Flux
 
 #### How to:
 
-- Move into the `ansible/` folder.
-- Add your VM/server's IP to the `inventory.yaml` with a new line under `[staging]`.
-- Run `ansible-playbook staging.yaml -i inventory`.
+- Move into the `ansible/production/` or `ansible/staging/` folder.
+- Add your VM/server's IP to the `inventory.yaml` with a new line under `[cpn]` and `[wn]` or `[staging]`.
+  - `[cpn]` stands for control plane node.
+  - `[wn]` stands for worker node.
+- Run `ansible-playbook production.yaml/staging.yaml -i inventory`.
 
-This will configure your VM, install k3s and install the flux operator.
+For production, this will configure Talos Linux and link them into one cluster.
+For staging, this will configure your VM, install k3s, and install the flux operator.
+
 But be warned. This repo makes use of encrypted secrets via CNCF SOPS. Flux will complain that you never added the correct private key. But longhorn and the prometheus stack should start. 
+
 
 ## Software
 
@@ -366,19 +371,18 @@ In production, I only want to deploy what's working. Therefore I'm using Talos.
 
 ## Hareware
 
-There are currently no worker nodes. The operating system is [proxmox](https://www.proxmox.com).
+I picked the Minisforum mini PC because it supports having a GPU. This will come in handy when using it with Ollama and n8n.
 
-The reason for proxmox is because I can play around. I can use Ubuntu server or switch to talos for a while.
+- MINISFORUM 795S7
+  - AMD Ryzen 9 7945HX (16C/32T)
+  - 32GB DRR5 RAM
+  - 1TB SSD
+  - RTX 4060 OC 8GL 
 
-### Staging
-
-Control Plane Node:
-- Ubuntu 24 VM
-  - 10 CPU Cores
-  - 200GB SSD
-  - 50GB RAM
-
-Scheduling is activated on the control plane node. Only used for testing.
+- NiPoGi E3B Mini PC
+  - ΑΜD Ryzen 5 7430U (6C/12T)
+  - 64GB DDR4 RAM
+  - 2TB SSD
 
 ### Production
 
@@ -395,3 +399,14 @@ Worker Nodes:
   - 3GB RAM
 
 Scheduling is deactivated on the control plane nodes.
+All nodes are setup by Ansible using `ansible/production/`.
+
+### Staging
+
+Control Plane Node:
+- Ubuntu 24 VM
+  - 10 CPU Cores
+  - 200GB SSD
+  - 50GB RAM
+
+Scheduling is activated on the control plane node. Only used for testing.
