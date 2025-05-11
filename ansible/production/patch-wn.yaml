@@ -1,4 +1,5 @@
 machine:
+  # Static ip for Talos Linux
   network:
     hostname: "worker-{{ worker_index }}"
     interfaces:
@@ -16,3 +17,34 @@ machine:
       - 8.8.4.4
       - 8.8.8.8
       - 1.1.1.1
+
+  # Mounting extra disk for longhorn
+  kubelet:
+    extraMounts:
+      - destination: /var/mnt/storage
+        type: bind
+        source: /var/mnt/storage
+        options:
+          - bind
+          - rshared
+          - rw
+  
+  # Disk for longhorn
+  disks:
+    - device: /dev/sdb
+      partitions:
+        - mountpoint: /var/mnt/storage
+
+  # Talos Linux image with system extentions for longhorn
+  install:
+    image: factory.talos.dev/metal-installer/b1ba84be4f5193a24085cc7e22fce31105e1583504d7d5aef494318f7cb1abd0:v1.10.1
+
+cluster:
+  # Required by longhorn
+  apiServer:
+    admissionControl:
+      - name: PodSecurity
+        configuration:
+          apiVersion: pod-security.admission.config.k8s.io/v1alpha1
+          defaults:
+            enforce: privileged
