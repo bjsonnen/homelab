@@ -1,23 +1,25 @@
-#- name: Set variables on localhost
-#  hosts: localhost
-#  connection: local
-#  vars_prompt:
-#    - name: "r_github_token"
-#      prompt: "Enter GitHub token"
-#      private: yes
-#    - name: "r_sops_key"
-#      prompt: "Enter SOPS key"
-#      private: yes
+- name: Set variables on localhost
+  hosts: localhost
+  connection: local
+  vars_prompt:
+    - name: "r_github_token"
+      prompt: "Enter GitHub token"
+      private: yes
+    - name: "r_sops_key"
+      prompt: "Enter SOPS key"
+      private: yes
 
-#  tasks:
-#    - name: Store variables
-#      ansible.builtin.copy:
-#        content: |
-#          ---
-#          global_github_token: "{{ r_github_token }}"
-#          global_sops_key: "{{ r_sops_key }}"
-#        dest: "./.ansible_vars.yml"
-#        mode: '0600'
+  tasks:
+    - name: Store variables
+      ansible.builtin.copy:
+        content: |
+          ---
+          global_github_token: "{{ r_github_token }}"
+          global_sops_key: "{{ r_sops_key }}"
+        dest: "./.ansible_vars.yml"
+        mode: '0600'
+
+# Take first control plane node and initiate the cluster
 
 - name: Install Initial Talos Control Plane Node
   hosts: localhost
@@ -56,9 +58,9 @@
 
     - name: Download kubeconfig
       ansible.builtin.shell:
-        cmd: "talosctl kubeconfig --nodes {{ groups['cpn'][0] }} --endpoints {{ groups['cpn'][0] }} --talosconfig=./configs/talosconfig"
+        cmd: "talosctl kubeconfig ./configs/kubeconfig --nodes {{ groups['cpn'][0] }} --endpoints {{ groups['cpn'][0] }} --talosconfig=./configs/talosconfig"
 
-## DOESNT WORK
+# Install other control plane nodes
 
 - name: Install Talos Control Plane Nodes
   hosts: localhost
@@ -80,7 +82,7 @@
         cmd: "talosctl apply-config --insecure -n {{ item.0 }} --file configs/controlplane-{{ item.1 + 2 }}.yaml"
       loop: "{{ groups['cpn'][1:] | zip(range(groups['cpn'] | length)) | list }}"
 
-## WORKS
+# Install all worker nodes
 
 - name: Install Talos Worker Nodes
   hosts: localhost
@@ -101,3 +103,58 @@
       ansible.builtin.shell:
         cmd: "talosctl apply-config --insecure -n {{ item.0 }} --file configs/worker-{{ item.1 + 1 }}.yaml"
       loop: "{{ groups['wn'] | zip(range(groups['wn'] | length)) | list }}"
+
+# Install FluxCD (GitOps) and SOPS key
+
+- name: Setup FluxCD and SOPS
+  hosts: localhost
+  vars_files:
+    - "./.ansible_vars.yml"
+  vars:
+    c_github_token: "{{ global_github_token }}"
+    c_sops_key: "{{ global_sops_key }}"
+
+  tasks:
+    # Without a wait it will throw a connection refused error
+    - name: Wait for first control-plane node to be ready
+      ansible.builtin.wait_for:
+        host: "{{ groups['cpn'][0] }}"
+        port: 6443
+        state: started
+        delay: 5
+        connect_timeout: 5
+        timeout: 3600
+
+    - name: Check if FluxCD is installable
+      ansible.builtin.shell:
+        cmd: 'flux check --pre'
+      environment:
+        KUBECONFIG: "./configs/kubeconfig"
+      register: flux_check
+
+    - name: Verify FluxCD prerequisites passed
+      ansible.builtin.debug:
+        msg: "FluxCD prerequisites checks passed!"
+      when: "'prerequisites checks passed' in flux_check.stdout"
+      failed_when: false
+
+    - name: Install FluxCD operator
+      ansible.builtin.shell:
+        cmd: 'flux bootstrap github --owner=bjsonnen --repository=homelab --branch=main --path=./clusters/production --personal'
+      environment:
+        KUBECONFIG: "./configs/kubeconfig"
+        GITHUB_TOKEN: "{{ c_github_token }}"
+
+    - name: Add SOPS private key
+      ansible.builtin.shell:
+        cmd: 'kubectl create secret generic sops-age --namespace=flux-system --from-literal=age.agekey={{ global_sops_key }}'
+      environment:
+        KUBECONFIG: "./configs/kubeconfig"
+
+    - name: Get current working directory
+      ansible.builtin.command: pwd
+      register: pwd_output
+
+    - name: Recommend to export KUBECONFIG
+      ansible.builtin.debug:
+        msg: 'Please run: export KUBECONFIG={{ pwd_output.stdout }}/configs/kubeconfig'
