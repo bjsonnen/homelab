@@ -23,7 +23,7 @@ spec:
         runAsGroup: 33
 
       containers:
-      - image: sissbruecker/linkding:1.31.0
+      - image: sissbruecker/linkding:1.39.1
         name: linkding
 
         #envFrom:
