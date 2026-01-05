@@ -1,8 +1,9 @@
+---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: twingate
   namespace: twingate
 spec:
-  interval: 1m
-  url: https://open-webui.github.io/helm-charts
+  interval: 1m0s
+  url: https://twingate.github.io/helm-charts

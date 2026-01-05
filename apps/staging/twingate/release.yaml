@@ -1,23 +1,14 @@
+---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: twingate
+  name: twingate-1
   namespace: twingate
 spec:
-  interval: 1m
   chart:
     spec:
-      chart: open-webui
-      version: "6.0.0"
+      chart: twingate/connector
+      reconcileStrategy: ChartVersion
       sourceRef:
-        kind: HelmRepository
-        name: twingate/connector
-        namespace: twingate/connector
-  targetNamespace: twingate/connector
-  values:
-    replicaCount: 1
-    ollama:
-      enabled: false
-    extraEnvVars:
-      - name: connector.existingSecret
-        value: "twingate-secrets1"
+        name: ""
+  interval: 1m0s
