@@ -7,7 +7,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: twingate/connector
+      chart: connector
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
