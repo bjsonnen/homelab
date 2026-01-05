@@ -5,6 +5,10 @@ metadata:
   name: twingate-1
   namespace: flux-system
 spec:
+  values:
+    connector:
+      network: bjsonnen
+      existingSecret: twingate-secrets1
   chart:
     spec:
       chart: connector
