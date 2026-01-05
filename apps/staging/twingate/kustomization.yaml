@@ -4,4 +4,5 @@ namespace: twingate
 resources:
   - namespace.yaml
   - repository.yaml
-  - release.yaml
+  - release-1.yaml
+  - release-2.yaml
