@@ -12,5 +12,5 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: prometheus
-      version: 87.19.1
+      version: 87.x
   interval: 1m0s
