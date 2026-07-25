@@ -11,6 +11,6 @@ spec:
       reconcileStrategy: ChartVersion
       sourceRef:
         kind: HelmRepository
-        name: prometheus
-      version: 9.18.2
+        name: prometheus-community/kube-prometheus-stack
+      version: 87.19.1
   interval: 1m0s
